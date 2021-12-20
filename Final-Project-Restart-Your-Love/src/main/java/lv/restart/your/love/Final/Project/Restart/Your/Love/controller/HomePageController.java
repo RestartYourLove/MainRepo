@@ -11,6 +11,6 @@ public class HomePageController {
     @GetMapping(value = "/home")
     public String getHomePage(Model model) {
         //model.addAttribute("myName", "Alexandra Gorbule");
-        return "home.html";
+        return "home";
     }
 }
