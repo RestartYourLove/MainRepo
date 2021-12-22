@@ -93,11 +93,21 @@ public class User implements UserDetails {
         this.password = password;
     }
 
+
+    //try to test it
+    public Collection<Task> addFinishedTask(Task task) {
+         finishedTasks.add(task);
+         return finishedTasks;
+    }
+
+
+
     public Collection<Task> getFinishedTasks() {
         return finishedTasks;
     }
 
     public void setFinishedTasks(Collection<Task> finishedTasks) {
+
         this.finishedTasks = finishedTasks;
     }
 }
