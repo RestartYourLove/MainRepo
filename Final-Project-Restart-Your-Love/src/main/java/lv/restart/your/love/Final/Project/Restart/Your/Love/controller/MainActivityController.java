@@ -6,8 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MainActivityController {
 
-    @GetMapping("/mainActivity")
+    @GetMapping("/")
     public String mainActivity() {
-        return "mainActivity";
+
+        return "mainactivity";
     }
 }
