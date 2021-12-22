@@ -94,9 +94,13 @@ public class User implements UserDetails {
     }
 
 
-    //try to test it
+    //needs to be tested!
     public Collection<Task> addFinishedTask(Task task) {
-         finishedTasks.add(task);
+        //is the if statement necessary or not? need to test
+        //maybe should just be finishedTasks.add(task) without the if statement
+        if (task.getStatus().equals("Done")) {
+            finishedTasks.add(task);
+        }
          return finishedTasks;
     }
 
