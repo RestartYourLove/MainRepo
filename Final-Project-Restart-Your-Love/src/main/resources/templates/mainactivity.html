@@ -1,33 +1,11 @@
 <!DOCTYPE html>
-<html >
 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <body>
+Hello here!
+<div th:text = "${taskTitle[0].getTitle()}">
 
-<?php
-$server = "sql11.freemysqlhosting.net";
-$user = "sql11460503";
-$pass = "RYiPnwTVhy";
-$db = "sql11460503";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-    }
-
-    $sql = "SELECT title FROM task";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-    echo "title: " . $row["id"]. "<br>";
-    }
-    } else {
-    echo "0 results";
-    }
-    $conn->close();
-    ?>
-
+</div>
 </body>
 </html>
