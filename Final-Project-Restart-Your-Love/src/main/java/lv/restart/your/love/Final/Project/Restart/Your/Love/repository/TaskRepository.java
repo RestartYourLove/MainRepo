@@ -11,5 +11,8 @@ public interface TaskRepository extends CrudRepository<Task, Integer> {
 
     Task findById(int id);
     List<Task> findAll();
-    void deleteById(int id);
+
+    //METHOD TO UPDATE task as done
+    //METHOD TO UPDATE task as not done
+
 }
