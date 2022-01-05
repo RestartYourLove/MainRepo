@@ -48,6 +48,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(
                         "/signup**",
                         "/home**",
+                        "/**",
                         "/js/**",
                         "/css/**",
                         "/img/**").permitAll()
@@ -55,6 +56,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/login")
+                .defaultSuccessUrl("/tasklist", true)
                 .permitAll()
                 .and()
                 .logout()

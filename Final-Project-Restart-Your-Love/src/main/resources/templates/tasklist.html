@@ -23,14 +23,14 @@
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#" th:href="@{/tasklist}">Task List</a>
+                    <a class="nav-link active" aria-current="page" href="#" th:href="@{/tasklist}">Task Calendar</a>
                 </li>
             </ul>
             <span class="navbar-text">
                     Welcome <span sec:authentication="principal.username"> User</span>!
                     <button class="btn btn-sm btn-outline-secondary" type="button" sec:authorize="isAuthenticated()"><a
                             th:href="@{/logout}">Log out</a></button>
-                </span>
+            </span>
         </div>
     </div>
 </nav>
