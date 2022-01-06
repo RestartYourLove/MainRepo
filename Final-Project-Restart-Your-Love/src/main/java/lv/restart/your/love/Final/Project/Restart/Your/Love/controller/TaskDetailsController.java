@@ -17,20 +17,9 @@ public class TaskDetailsController {
     @Autowired
     private TaskService taskService;
 
-    @GetMapping(value = {"/taskdetails"})
-    public String getTaskDetails(Model model) {
-        List<Task> taskDetails = taskService.getAllTasks();
-        model.addAttribute("taskTitle", taskDetails);
-        return "taskdetails";
-    }
-
     // Get the task details by ID
     @GetMapping(value = {"/taskdetails/{id}"})
     public String getTaskById(@PathVariable(value = "id") long id, Model model) {
-
-        //load all tasks and task data
-        List<Task> taskDetails = taskService.getAllTasks();
-        model.addAttribute("taskTitle", taskDetails);
 
         //get task from the service
         Task myTask = taskService.findById(id);
