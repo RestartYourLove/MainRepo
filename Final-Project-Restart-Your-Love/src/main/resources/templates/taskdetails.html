@@ -47,8 +47,8 @@
 
     <p>Task status: <span th:text = "${taskTitle[0].getStatus()}"></span></p>
 
-    <button type="button">Mark task done</button>
-
+<!--    <a class="btn btn-light btn-sm" href=#>Mark task Done</a>-->
+    <button type="button" name="action" th:value = "done" th:text = "done">Mark task done</button>
 
 </div>
 
