@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -16,18 +17,19 @@ public class TaskDetailsController {
     @Autowired
     private TaskService taskService;
 
-    @GetMapping(value = {"/taskdetails"})
-    public String getTaskDetails(Model model) {
-        List<Task> taskDetails = taskService.getAllTasks();
-        model.addAttribute("taskTitle", taskDetails);
+    // Get the task details by ID
+    @GetMapping(value = {"/taskdetails/{id}"})
+    public String getTaskById(@PathVariable(value = "id") long id, Model model) {
+
+        //get task from the service
+        Task myTask = taskService.findById(id);
+
+        //set task as a model attribute to pre-populate the form
+        model.addAttribute("myTask", myTask);
+
         return "taskdetails";
     }
 
-//    // Get the task details by ID
-//    @GetMapping("/taskdetails/{id}")
-//    public Task getTaskById(@PathVariable(value = "id") int id) {
-//        return taskService.findById(id);
-//    }
 //
 //
 //    // Update task status (done / not done)
