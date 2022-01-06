@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Task Calendar</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+</head>
+<body>
+
+<!-- navigation bar (header) bootstrap v5.1 -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">RESTART YOUR LOVE</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#" th:href="@{/tasklist}">Task Calendar</a>
+                </li>
+            </ul>
+            <span class="navbar-text">
+                    Welcome <span sec:authentication="principal.username"> User</span>!
+                    <button class="btn btn-info btn-sm" type="button" sec:authorize="isAuthenticated()"><a
+                            th:href="@{/logout}">Log out</a></button>
+
+
+            </span>
+        </div>
+    </div>
+</nav>
+
+
+<br>
+<br>
+
+<div class="container">
+    <h1>Your tasks: </h1>
+    <!--    <h3> TITLE BY INDEX 0 FROM DATABASE:</h3>-->
+    <!--    <div th:text = "${taskTitle[0].getTitle()}"></div>-->
+
+    <!--    <h3> LOOPED LIST OF TASK TITLES FROM DATABASE:</h3>-->
+    <!--    <h4 th:each="taskTitle : ${taskTitle}" th:text="${taskTitle.getTitle()}"></h4>-->
+    <br>
+</div>
+
+
+
+
+<div class="container">
+
+<!--    To make Task Title clickable we can use easy code - onclick="location.href='/taskdetails';" in a div class="card-header" or div class="card-body"-->
+<!--    But instead of a hardcoded /taskdetails endpoint, it needs to get the current task id and go to a page with that task id (/taskdetails/{id}-->
+<div class="row row-cols-1 row-cols-md-5 g-3">
+    <div class="col-sm-4">
+        <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+            <div class="card-header">Day 1</div>
+            <div class="card-body" onclick="location.href='/taskdetails';" style="cursor: pointer;">
+                <h5 class="card-title" th:text = "${taskTitle[0].getTitle()}">Task title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+<!--            In case we want to drop the extra page and mark task done right here with the button-->
+<!--            <a class="btn btn-light btn-sm" href=#>Mark task Done</a>-->
+        </div>
+    </div>
+
+
+    <div class="col-sm-4">
+        <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+            <div class="card-header">Day 2</div>
+            <div class="card-body">
+                <h5 class="card-title" th:text = "${taskTitle[1].getTitle()}">Task title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header">Day 3</div>
+            <div class="card-body">
+                <h5 class="card-title" th:text = "${taskTitle[2].getTitle()}">Task title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header">Day 4</div>
+            <div class="card-body">
+                <h5 class="card-title">Task title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header">Day 5</div>
+            <div class="card-body">
+                <h5 class="card-title">Task title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header">Day 6</div>
+            <div class="card-body">
+                <h5 class="card-title">Task title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header">Day 7</div>
+            <div class="card-body">
+                <h5 class="card-title">Task title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header">Day 8</div>
+            <div class="card-body">
+                <h5 class="card-title">Task title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header">Day 9</div>
+            <div class="card-body">
+                <h5 class="card-title">Task title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header">Day 10</div>
+            <div class="card-body">
+                <h5 class="card-title">Task title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header">Day 11</div>
+            <div class="card-body">
+                <h5 class="card-title">Task title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header">Day 12</div>
+            <div class="card-body">
+                <h5 class="card-title">Task title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header">Day 13</div>
+            <div class="card-body">
+                <h5 class="card-title">Task title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header">Day 14</div>
+            <div class="card-body">
+                <h5 class="card-title">Task title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header">Day 15</div>
+            <div class="card-body">
+                <h5 class="card-title">Task title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header">Day 16</div>
+            <div class="card-body">
+                <h5 class="card-title">Task title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header">Day 17</div>
+            <div class="card-body">
+                <h5 class="card-title">Task title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header">Day 18</div>
+            <div class="card-body">
+                <h5 class="card-title">Task title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header">Day 19</div>
+            <div class="card-body">
+                <h5 class="card-title">Task title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header">Day 20</div>
+            <div class="card-body">
+                <h5 class="card-title">Task title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header">Day 21</div>
+            <div class="card-body">
+                <h5 class="card-title">Task title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header">Day 22</div>
+            <div class="card-body">
+                <h5 class="card-title">Task title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header">Day 23</div>
+            <div class="card-body">
+                <h5 class="card-title">Task title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header">Day 24</div>
+            <div class="card-body">
+                <h5 class="card-title">Task title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header">Day 25</div>
+            <div class="card-body">
+                <h5 class="card-title">Task title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header">Day 26</div>
+            <div class="card-body">
+                <h5 class="card-title">Task title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header">Day 27</div>
+            <div class="card-body">
+                <h5 class="card-title">Task title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header">Day 28</div>
+            <div class="card-body">
+                <h5 class="card-title">Task title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header">Day 29</div>
+            <div class="card-body">
+                <h5 class="card-title">Task title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header">Day 30</div>
+            <div class="card-body">
+                <h5 class="card-title">Task title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</div>
+
+
+
+</body>
+</html>

@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService{
         return userRepository.save(user);
     }
 
-    //METHOD THAT PERFORMS TEH LOGIN BY FINDING THE USERNAME IN DATABASE
+    //METHOD THAT PERFORMS THE LOGIN BY FINDING THE USERNAME IN DATABASE
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
        User user = userRepository.findByUsername(username);

@@ -29,10 +29,9 @@ public class User implements UserDetails {
                     name = "finished_task_id", referencedColumnName = "id"))
 
     private Collection<Task> finishedTasks;
-    //why like this? is there a better way?
-    //how to add ONLY current users finished tasks to this table?
 
 
+    //Constructors
     public User() {
     }
 
@@ -43,6 +42,7 @@ public class User implements UserDetails {
     }
 
 
+    //Getters and setters
     public Long getId() {
         return id;
     }
@@ -51,11 +51,41 @@ public class User implements UserDetails {
         this.id = id;
     }
 
-
     public String getUsername() {
         return username;
     }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Collection<Task> getFinishedTasks() {
+        return finishedTasks;
+    }
+
+    public void setFinishedTasks(Collection<Task> finishedTasks) {
+        this.finishedTasks = finishedTasks;
+    }
+
+
+    //Custom method
+    //adding finished tasks to a user in db
+    //try to test it
+    public Collection<Task> addFinishedTask(Task task) {
+        finishedTasks.add(task);
+        return finishedTasks;
+    }
+
+
+    //Overriding spring security authorization by creating a mock (empty) authority
     @Override
     public boolean isAccountNonExpired() {
         return true;
@@ -76,42 +106,9 @@ public class User implements UserDetails {
         return true;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return new HashSet<GrantedAuthority>();
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-
-    //needs to be tested!
-    public Collection<Task> addFinishedTask(Task task) {
-        //is the if statement necessary or not? need to test
-        //maybe should just be finishedTasks.add(task) without the if statement
-        if (task.getStatus().equals("Done")) {
-            finishedTasks.add(task);
-        }
-         return finishedTasks;
-    }
-
-
-
-    public Collection<Task> getFinishedTasks() {
-        return finishedTasks;
-    }
-
-    public void setFinishedTasks(Collection<Task> finishedTasks) {
-
-        this.finishedTasks = finishedTasks;
-    }
 }
