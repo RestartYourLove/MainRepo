@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface TaskRepository extends CrudRepository<Task, Integer> {
 
-    Task findById(int id);
+    Task findById(long id);
     List<Task> findAll();
 
     //METHOD TO UPDATE task as done
