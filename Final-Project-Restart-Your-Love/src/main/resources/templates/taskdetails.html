@@ -28,8 +28,7 @@
             </ul>
             <span class="navbar-text">
                     Welcome <span sec:authentication="principal.username"> User</span>!
-                    <button class="btn btn-sm btn-outline-secondary" type="button" sec:authorize="isAuthenticated()"><a
-                            th:href="@{/logout}">Log out</a></button>
+                    <button type="button" class="btn btn-success btn-sm" sec:authorize="isAuthenticated()"><a style="text-decoration:none; color: white" th:href="@{/logout}">Log out</a></button>
             </span>
         </div>
     </div>
