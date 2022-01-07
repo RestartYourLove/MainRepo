@@ -14,27 +14,27 @@ public class TaskDoneButtonController {
     @Autowired
     private TaskService taskService;
 
-    // SUBMIT TASK - button
-    String statusValue = "";
-
-    @GetMapping
-    public String statusCheck(Model model){
-        String statusValue = taskService.findById(1).getStatus();
-        model.addAttribute("statusValue", statusValue);
-        return "taskdetails";
-    }
-
-    @PostMapping
-    public String done(Model model,@RequestParam String action) {
-
-        System.out.println(action);
-
-        if (action.equals("done")) {
-            statusValue = "Task is done";
-            model.addAttribute("statusValue", statusValue);
-        }
-
-        return "taskdetails";
-    }
+//    // SUBMIT TASK - button
+//    String statusValue = "";
+//
+//    @GetMapping
+//    public String statusCheck(Model model){
+//        String statusValue = taskService.findById(1).getStatus();
+//        model.addAttribute("statusValue", statusValue);
+//        return "taskdetails";
+//    }
+//
+//    @PostMapping
+//    public String done(Model model,@RequestParam String action) {
+//
+//        System.out.println(action);
+//
+//        if (action.equals("done")) {
+//            statusValue = "Task is done";
+//            model.addAttribute("statusValue", statusValue);
+//        }
+//
+//        return "taskdetails";
+//    }
 
 }
