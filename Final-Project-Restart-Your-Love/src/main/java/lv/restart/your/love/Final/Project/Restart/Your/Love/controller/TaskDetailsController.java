@@ -3,12 +3,16 @@ package lv.restart.your.love.Final.Project.Restart.Your.Love.controller;
 import lv.restart.your.love.Final.Project.Restart.Your.Love.model.Task;
 import lv.restart.your.love.Final.Project.Restart.Your.Love.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Controller
@@ -30,18 +34,18 @@ public class TaskDetailsController {
         return "taskdetails";
     }
 
-//
-//
+
+
 //    // Update task status (done / not done)
 //    @PutMapping("/taskdetails/{id}")
-//    public ResponseEntity<Object> updateTask(@RequestBody Task task, @PathVariable int id) {
+//    public ResponseEntity<Object> updateTask(@RequestBody Task task, @PathVariable long id) {
 //
 //        Optional<Task> myTask = Optional.ofNullable(taskService.findById(id));
 //
 //        if (!myTask.isPresent())
 //            return ResponseEntity.notFound().build();
 //
-//        task.setId((long) id);
+//        task.setStatus();
 //
 //        taskService.save(task);
 //

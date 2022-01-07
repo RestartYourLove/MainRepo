@@ -73,6 +73,11 @@ public class TaskStatus {
         this.status = status;
     }
 
+//    //custom boolean get status method to change card color in html based on task status
+//    public boolean isDone() {
+//        return status.equals("Done");
+//    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

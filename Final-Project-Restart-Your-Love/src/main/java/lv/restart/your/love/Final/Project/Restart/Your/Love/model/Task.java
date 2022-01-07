@@ -58,18 +58,28 @@ public class Task {
         return status;
     }
 
-    public void setStatus(Set<TaskStatus> ratings) {
-        this.status = ratings;
+    public void setStatus(Set<TaskStatus> status) {
+        this.status = status;
     }
 
     //custom boolean get status method to change card color in html based on task status
     public boolean isDone() {
-        if (status.equals("Done")) {
+        if (status.contains("Done")) {
             return true;
         } else {
             return false;
         }
     }
+
+    //temporary!! custom method to display that the task is Not done if it's not stated otherwise
+    public String taskStatus() {
+        if (status.isEmpty()) {
+            return "Not Done";
+        } else {
+            return "Done";
+        }
+    }
+
 
 
     @Override
