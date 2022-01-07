@@ -20,6 +20,7 @@ public class TaskStatus {
     @JoinColumn(name = "task_id")
     private Task task;
 
+    @Column(columnDefinition = "varchar(255) default 'Not done'")
     private String status;
 
 
@@ -73,10 +74,6 @@ public class TaskStatus {
         this.status = status;
     }
 
-//    //custom boolean get status method to change card color in html based on task status
-//    public boolean isDone() {
-//        return status.equals("Done");
-//    }
 
     @Override
     public boolean equals(Object o) {

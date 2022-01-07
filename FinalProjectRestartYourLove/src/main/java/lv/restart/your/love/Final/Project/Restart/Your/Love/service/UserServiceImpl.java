@@ -1,6 +1,7 @@
 package lv.restart.your.love.Final.Project.Restart.Your.Love.service;
 
 import lv.restart.your.love.Final.Project.Restart.Your.Love.dto.UserSignUpDto;
+import lv.restart.your.love.Final.Project.Restart.Your.Love.model.TaskStatus;
 import lv.restart.your.love.Final.Project.Restart.Your.Love.model.User;
 import lv.restart.your.love.Final.Project.Restart.Your.Love.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Table(name = "task")
+@Table(name = "task_type")
 public class Task {
 
     @Id
@@ -59,6 +59,7 @@ public class Task {
     }
 
     public void setStatus(Set<TaskStatus> status) {
+
         this.status = status;
     }
 
@@ -70,16 +71,6 @@ public class Task {
             return false;
         }
     }
-
-    //temporary!! custom method to display that the task is Not done if it's not stated otherwise
-    public String taskStatus() {
-        if (status.isEmpty()) {
-            return "Not Done";
-        } else {
-            return "Done";
-        }
-    }
-
 
 
     @Override

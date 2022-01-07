@@ -6,15 +6,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="Final-Project-Restart-Your-Love" />
         <module name="FinalProjectRestartYourLove" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="Final-Project-Restart-Your-Love" target="11" />
       <module name="FinalProjectRestartYourLove" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Final-Project-Restart-Your-Love" options="-parameters" />
       <module name="FinalProjectRestartYourLove" options="-parameters" />
     </option>
   </component>

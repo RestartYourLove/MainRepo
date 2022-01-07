@@ -12,6 +12,7 @@ public interface TaskRepository extends CrudRepository<Task, Long> {
     Task findById(long id);
     List<Task> findAll();
 
+
     //METHOD TO UPDATE task as done
     //METHOD TO UPDATE task as not done
 

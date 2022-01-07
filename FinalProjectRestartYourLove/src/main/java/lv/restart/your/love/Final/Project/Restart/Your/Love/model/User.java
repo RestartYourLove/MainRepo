@@ -41,6 +41,7 @@ public class User implements UserDetails {
     }
 
 
+
     //Getters and setters
     public Long getId() {
         return id;
@@ -77,6 +78,10 @@ public class User implements UserDetails {
     //Custom method
     //adding tasks to a user in db
     //try to test it
+    public Set<TaskStatus> addTaskStatus(TaskStatus taskStatus) {
+        status.add(taskStatus);
+        return status;
+    }
 
 
     //Overriding spring security authorization by creating a mock (empty) authority

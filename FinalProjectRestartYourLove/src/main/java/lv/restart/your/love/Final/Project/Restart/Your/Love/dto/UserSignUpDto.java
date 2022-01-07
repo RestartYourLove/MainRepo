@@ -1,8 +1,11 @@
 package lv.restart.your.love.Final.Project.Restart.Your.Love.dto;
 
 import lv.restart.your.love.Final.Project.Restart.Your.Love.model.Task;
+import lv.restart.your.love.Final.Project.Restart.Your.Love.model.TaskStatus;
 
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 public class UserSignUpDto {
 
@@ -33,4 +36,5 @@ public class UserSignUpDto {
     public void setPassword(String password) {
         this.password = password;
     }
+
 }
