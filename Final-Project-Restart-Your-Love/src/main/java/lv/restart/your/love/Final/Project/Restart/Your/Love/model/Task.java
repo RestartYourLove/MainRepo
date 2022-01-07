@@ -1,6 +1,9 @@
 package lv.restart.your.love.Final.Project.Restart.Your.Love.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "task")
@@ -11,17 +14,21 @@ public class Task {
     private Long id;
     private String title;
     private String description;
-    private String status;
 
+    @OneToMany(mappedBy = "task")
+    private Set<TaskStatus> status = new HashSet<>();
+
+
+    //constructors
     public Task() {
     }
 
-    public Task(String title, String description, String status) {
+    public Task(Long id, String title, String description, Set<TaskStatus> status) {
+        this.id = id;
         this.title = title;
         this.description = description;
         this.status = status;
     }
-
 
     public Long getId() {
         return id;
@@ -47,14 +54,13 @@ public class Task {
         this.description = description;
     }
 
-    public String getStatus() {
+    public Set<TaskStatus> getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setStatus(Set<TaskStatus> ratings) {
+        this.status = ratings;
     }
-
 
     //custom boolean get status method to change card color in html based on task status
     public boolean isDone() {
@@ -65,4 +71,17 @@ public class Task {
         }
     }
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Task task = (Task) o;
+        return Objects.equals(id, task.id) && Objects.equals(title, task.title) && Objects.equals(description, task.description) && Objects.equals(status, task.status);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, description, status);
+    }
 }

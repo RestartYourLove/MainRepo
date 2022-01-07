@@ -1,9 +1,14 @@
 package lv.restart.your.love.Final.Project.Restart.Your.Love.dto;
 
+import lv.restart.your.love.Final.Project.Restart.Your.Love.model.Task;
+
+import java.util.Collection;
+
 public class UserSignUpDto {
 
     private String username;
     private String password;
+
 
     public UserSignUpDto(String username, String password) {
         this.username = username;

@@ -6,6 +6,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
 
 @Entity
@@ -18,27 +20,24 @@ public class User implements UserDetails {
     private String username;
     private String password;
 
-
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    //creating third connected table
-    @JoinTable(
-            name = "users_progress",
-            joinColumns = @JoinColumn(
-                    name = "user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(
-                    name = "finished_task_id", referencedColumnName = "id"))
-
-    private Collection<Task> finishedTasks;
+    @OneToMany(mappedBy = "user")
+    private Set<TaskStatus> status = new HashSet<>();
 
 
     //Constructors
     public User() {
     }
 
-    public User(String username, String password, Collection<Task> finishedTasks) {
+    public User(String username, String password) {
         this.username = username;
         this.password = password;
-        this.finishedTasks = finishedTasks;
+    }
+
+    public User(Long id, String username, String password, Set<TaskStatus> status) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.status = status;
     }
 
 
@@ -67,22 +66,17 @@ public class User implements UserDetails {
         this.password = password;
     }
 
-    public Collection<Task> getFinishedTasks() {
-        return finishedTasks;
+    public Set<TaskStatus> getStatus() {
+        return status;
     }
 
-    public void setFinishedTasks(Collection<Task> finishedTasks) {
-        this.finishedTasks = finishedTasks;
+    public void setStatus(Set<TaskStatus> status) {
+        this.status = status;
     }
-
 
     //Custom method
-    //adding finished tasks to a user in db
+    //adding tasks to a user in db
     //try to test it
-    public Collection<Task> addFinishedTask(Task task) {
-        finishedTasks.add(task);
-        return finishedTasks;
-    }
 
 
     //Overriding spring security authorization by creating a mock (empty) authority
@@ -111,4 +105,17 @@ public class User implements UserDetails {
         return new HashSet<GrantedAuthority>();
     }
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(id, user.id) && Objects.equals(username, user.username) && Objects.equals(password, user.password) && Objects.equals(status, user.status);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, username, password, status);
+    }
 }
