@@ -54,4 +54,15 @@ public class Task {
     public void setStatus(String status) {
         this.status = status;
     }
+
+
+    //custom boolean get status method to change card color in html based on task status
+    public boolean isDone() {
+        if (status.equals("Done")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
