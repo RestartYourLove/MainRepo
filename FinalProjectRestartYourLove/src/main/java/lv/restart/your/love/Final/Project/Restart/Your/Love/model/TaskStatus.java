@@ -1,17 +1,18 @@
 package lv.restart.your.love.Final.Project.Restart.Your.Love.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = "task_status")
-public class TaskStatus {
+public class TaskStatus implements Serializable {
 
     @EmbeddedId
     private TaskStatusKey id;
 
     @ManyToOne
-    @MapsId("userId")
+    @MapsId("userId") //This is the name of attr in TaskStatusKey class
     @JoinColumn(name = "user_id")
     private User user;
 
@@ -20,25 +21,25 @@ public class TaskStatus {
     @JoinColumn(name = "task_id")
     private Task task;
 
-    @Column(columnDefinition = "varchar(255) default 'Not done'")
-    private String status;
+    @Column(name = "status_done", columnDefinition = "boolean default false")
+    private boolean statusDone = false; //in db 0 == false (set by default as not done/false)
 
 
     //constructors
     public TaskStatus() {
     }
 
-    public TaskStatus(User user, Task task, String status) {
+    public TaskStatus(User user, Task task, boolean statusDone) {
         this.user = user;
         this.task = task;
-        this.status = status;
+        this.statusDone = statusDone;
     }
 
-    public TaskStatus(TaskStatusKey id, User user, Task task, String status) {
+    public TaskStatus(TaskStatusKey id, User user, Task task, boolean statusDone) {
         this.id = id;
         this.user = user;
         this.task = task;
-        this.status = status;
+        this.statusDone = statusDone;
     }
 
     //getters and setters
@@ -66,12 +67,12 @@ public class TaskStatus {
         this.task = task;
     }
 
-    public String getStatus() {
-        return status;
+    public boolean getStatusDone() {
+        return statusDone;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setStatusDone(boolean statusDone) {
+        this.statusDone = statusDone;
     }
 
 
@@ -80,11 +81,11 @@ public class TaskStatus {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TaskStatus that = (TaskStatus) o;
-        return Objects.equals(id, that.id) && Objects.equals(user, that.user) && Objects.equals(task, that.task) && Objects.equals(status, that.status);
+        return Objects.equals(id, that.id) && Objects.equals(user, that.user) && Objects.equals(task, that.task) && Objects.equals(statusDone, that.statusDone);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, user, task, status);
+        return Objects.hash(id, user, task, statusDone);
     }
 }

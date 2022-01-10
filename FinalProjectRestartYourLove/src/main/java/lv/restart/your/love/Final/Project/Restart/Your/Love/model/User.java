@@ -4,10 +4,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 
 @Entity
@@ -21,7 +18,8 @@ public class User implements UserDetails {
     private String password;
 
     @OneToMany(mappedBy = "user")
-    private Set<TaskStatus> status = new HashSet<>();
+    private List<TaskStatus> taskStatus = new ArrayList<>();
+    //this Set includes the tasks and their statuses. Your task and status fields are included in private Set<TaskStatus> taskStatus.
 
 
     //Constructors
@@ -33,11 +31,11 @@ public class User implements UserDetails {
         this.password = password;
     }
 
-    public User(Long id, String username, String password, Set<TaskStatus> status) {
+    public User(Long id, String username, String password, List<TaskStatus> taskStatus) {
         this.id = id;
         this.username = username;
         this.password = password;
-        this.status = status;
+        this.taskStatus = taskStatus;
     }
 
 
@@ -67,20 +65,21 @@ public class User implements UserDetails {
         this.password = password;
     }
 
-    public Set<TaskStatus> getStatus() {
-        return status;
+    public List<TaskStatus> getTaskStatus() {
+        return taskStatus;
     }
 
-    public void setStatus(Set<TaskStatus> status) {
-        this.status = status;
+    public void setTaskStatus(List<TaskStatus> taskStatus) {
+        this.taskStatus = taskStatus;
     }
 
     //Custom method
+
     //adding tasks to a user in db
     //try to test it
-    public Set<TaskStatus> addTaskStatus(TaskStatus taskStatus) {
-        status.add(taskStatus);
-        return status;
+    public List<TaskStatus> addTaskStatus(TaskStatus taskStatus) {
+        this.taskStatus.add(taskStatus);
+        return this.taskStatus;
     }
 
 
@@ -116,11 +115,11 @@ public class User implements UserDetails {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(id, user.id) && Objects.equals(username, user.username) && Objects.equals(password, user.password) && Objects.equals(status, user.status);
+        return Objects.equals(id, user.id) && Objects.equals(username, user.username) && Objects.equals(password, user.password) && Objects.equals(taskStatus, user.taskStatus);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, username, password, status);
+        return Objects.hash(id, username, password, taskStatus);
     }
 }
