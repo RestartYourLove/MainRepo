@@ -1,0 +1,12 @@
+#bootstrap-overrides{
+    background: linear-gradient(#ffffff 0%, #f288c6 55%) fixed;
+    font-family: 'Montserrat', sans-serif;
+    font-size:1.2rem;
+}
+
+#logo1{
+    width:80%;
+}
+h5, strong{
+    font-weight: 1000;
+}

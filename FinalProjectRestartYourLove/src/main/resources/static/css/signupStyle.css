@@ -1,0 +1,14 @@
+#bootstrap-overrides{
+    background: linear-gradient(#ffffff 0%, #f288c6 55%) fixed;
+    font-family: 'Montserrat', sans-serif;
+    font-size:1.2rem;
+}
+.container-fluid{
+    padding-left:100px;
+    padding-right:100px;
+}
+#logo2{
+    width:270px;
+    height:100px;
+    cursor: pointer;
+}

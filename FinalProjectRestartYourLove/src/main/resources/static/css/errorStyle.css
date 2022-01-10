@@ -1,0 +1,8 @@
+#bootstrap-overrides{
+    background: linear-gradient(#ffffff 0%, #f288c6 25%) fixed;
+    font-family: 'Montserrat', sans-serif;
+    font-size:1.2rem;
+}
+.text-center{
+    padding-top: 200px;
+}
