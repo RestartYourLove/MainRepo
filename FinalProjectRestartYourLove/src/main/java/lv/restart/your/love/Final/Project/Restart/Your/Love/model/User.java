@@ -19,8 +19,7 @@ public class User implements UserDetails {
 
     @OneToMany(mappedBy = "user")
     private List<TaskStatus> taskStatus = new ArrayList<>();
-    //this Set includes the tasks and their statuses. Your task and status fields are included in private Set<TaskStatus> taskStatus.
-
+    //this list includes the tasks and their statuses. Your task and status fields are included in private List<TaskStatus> taskStatus.
 
     //Constructors
     public User() {

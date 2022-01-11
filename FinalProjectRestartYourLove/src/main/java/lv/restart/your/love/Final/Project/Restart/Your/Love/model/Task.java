@@ -15,10 +15,11 @@ public class Task {
 
     @OneToMany(mappedBy = "task")
     private List<TaskStatus> taskStatus = new ArrayList<>();
-    //this Set includes the tasks and their statuses. Your task and status fields are included in private Set<TaskStatus> taskStatus.
+    //this list includes the tasks and their statuses. Your task and status fields are included in private List<TaskStatus> taskStatus.
 
+    //doesn't get stored in db
     @Transient
-    private boolean status;
+    private boolean isCompleted;
 
     //constructors
     public Task() {
@@ -31,12 +32,12 @@ public class Task {
         this.taskStatus = taskStatus;
     }
 
-    public boolean isStatus() {
-        return status;
+    public boolean isCompleted() {
+        return isCompleted;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
+    public void setCompleted(boolean completed) {
+        this.isCompleted = completed;
     }
 
     public Long getId() {
@@ -81,36 +82,31 @@ public class Task {
         return this.taskStatus;
     }
 
-    //custom show status method
-//    public String getStatusString() {
-//        if (taskStatus.equals(0)) {
-//            return "Not done";
-//        } else {
-//            return "Done";
-//        }
-//    }
 
-
-    //custom boolean get status method to change card color in html based on task status
-    public boolean isDone() {
-        if (taskStatus.equals(0)) {
-            return true;
+    //printing status on screen
+    //if the task by specified id is in the taskStatus list (where finished tasks are added by user) --
+    //then task status is printed as Completed. Otherwise - not completed;
+    public String printStatus() {
+        String statusString = "";
+        if (this.isCompleted) {
+            statusString = "Completed";
         } else {
-            return false;
+            statusString = "Not completed";
+        }
+        return statusString;
+    }
+
+
+        @Override
+        public boolean equals (Object o){
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            Task task = (Task) o;
+            return Objects.equals(id, task.id) && Objects.equals(title, task.title) && Objects.equals(description, task.description) && Objects.equals(taskStatus, task.taskStatus);
+        }
+
+        @Override
+        public int hashCode () {
+            return Objects.hash(id, title, description, taskStatus);
         }
     }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Task task = (Task) o;
-        return Objects.equals(id, task.id) && Objects.equals(title, task.title) && Objects.equals(description, task.description) && Objects.equals(taskStatus, task.taskStatus);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, title, description, taskStatus);
-    }
-}

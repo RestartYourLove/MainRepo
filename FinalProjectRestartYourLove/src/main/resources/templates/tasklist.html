@@ -62,7 +62,7 @@
 
 	<div class="row row-cols-1 row-cols-md-5 g-3">
 		<div th:each="taskTitle, index : ${taskTitle}" class="col-sm-4">
-			<span th:switch="${taskTitle.isDone()}">
+			<span th:switch="${taskTitle.isCompleted()}">
 
 				<div th:case="true" class="card text-white bg-success mb-3" style="max-width: 18rem;">
 					<div class="card-header" th:text="'Day ' + ${taskTitle.getId()}">Day #</div>
@@ -75,7 +75,7 @@
 				</div>
 
 				<div th:case="false" class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-					<div th:text="${newStatusList[index.getIndex()].getStatusDone()}"> </div>
+<!--					<div th:text="${taskTitle.isCompleted()}"> </div>-->
 					<div class="card-header" th:text="'Day ' + ${taskTitle.getId()}">Day #</div>
 					<div class="card-body">
 						<h5 class="card-title" th:text="${taskTitle.getTitle()}">Task title</h5>

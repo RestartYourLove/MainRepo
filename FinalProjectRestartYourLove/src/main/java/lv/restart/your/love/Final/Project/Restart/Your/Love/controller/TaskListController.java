@@ -1,13 +1,10 @@
 package lv.restart.your.love.Final.Project.Restart.Your.Love.controller;
 
-import lv.restart.your.love.Final.Project.Restart.Your.Love.auth.AuthHelper;
 import lv.restart.your.love.Final.Project.Restart.Your.Love.model.Task;
 import lv.restart.your.love.Final.Project.Restart.Your.Love.model.TaskStatus;
 import lv.restart.your.love.Final.Project.Restart.Your.Love.model.User;
-import lv.restart.your.love.Final.Project.Restart.Your.Love.repository.TaskStatusRepository;
 import lv.restart.your.love.Final.Project.Restart.Your.Love.repository.UserRepository;
 import lv.restart.your.love.Final.Project.Restart.Your.Love.service.TaskService;
-import lv.restart.your.love.Final.Project.Restart.Your.Love.service.TaskStatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,26 +25,28 @@ public class TaskListController {
     // Get all tasks
     @GetMapping("/tasklist")
     public String getAllTasks(Model model) {
+        //Getting a list of all tasks from db
         List<Task> taskList = taskService.getAllTasks();
 
+        //Getting the list of tasks with their status for logged in user form user model variable taskStatus
+        //(Currently user hardcoded)
         User user = userRepository.findByUsername("liza2");
-        List<TaskStatus> taskStatusList = user.getTaskStatus();
+        List<TaskStatus> userTaskStatusList = user.getTaskStatus();
 
-        List<TaskStatus> newStatusList = new ArrayList<>();
-
-        for (TaskStatus taskStatus : taskStatusList) {
+        //Comparing tasks and their statuses in the User (model) taskStatus list --
+        //to the full taskList retrieved from db
+        //If the task from db is found in the User taskStatus list, it's set as Completed in the Task model transiet variable "isCompleted"
+        //and displayed as such
+        for (TaskStatus taskStatus : userTaskStatusList) {
             for (int i = 0; i < taskList.size(); i++) {
                 if (taskStatus.getTask().getId() == taskList.get(i).getId()) {
-                    taskList.get(i).setStatus(true);
+                    taskList.get(i).setCompleted(true);
                 }
             }
         }
 
-        //list<Task> of tasks completed
-        //get those and update taskList to mark completed tasks as completed
-
+        //set taskList as a model named "taskTitle" attribute use in html
         model.addAttribute("taskTitle", taskList);
-        model.addAttribute("newStatusList", newStatusList);
         return "tasklist";
 
     }

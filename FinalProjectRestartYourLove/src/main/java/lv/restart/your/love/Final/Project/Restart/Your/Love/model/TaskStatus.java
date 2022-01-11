@@ -21,8 +21,9 @@ public class TaskStatus implements Serializable {
     @JoinColumn(name = "task_id")
     private Task task;
 
-    @Column(name = "status_done", columnDefinition = "boolean default false")
-    private boolean statusDone = false; //in db 0 == false (set by default as not done/false)
+//    @Column(name = "status_done", columnDefinition = "boolean default false")
+    @Column(name = "status_done")
+    private boolean statusDone;
 
 
     //constructors
