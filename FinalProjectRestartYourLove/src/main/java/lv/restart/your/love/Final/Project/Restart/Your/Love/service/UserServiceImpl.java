@@ -29,6 +29,11 @@ public class UserServiceImpl implements UserService{
         return userRepository.save(user);
     }
 
+    @Override
+    public User registerNewUserAccount(UserSignUpDto signUpDto) throws UserAlreadyExistException {
+        return null;
+    }
+
     //METHOD THAT PERFORMS THE LOGIN BY FINDING THE USERNAME IN DATABASE
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
