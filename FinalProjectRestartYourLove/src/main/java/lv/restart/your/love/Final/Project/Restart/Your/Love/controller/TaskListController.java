@@ -33,7 +33,6 @@ public class TaskListController {
         List<Task> taskList = taskService.getAllTasks();
 
         //Getting the list of tasks with their status for logged in user form user model variable taskStatus
-        //(Currently user hardcoded)
         User user = userRepository.findByUsername(authHelper.getName());
         List<TaskStatus> userTaskStatusList = user.getTaskStatus();
 
