@@ -61,8 +61,8 @@
 <div class="container">
 
 	<div class="row row-cols-1 row-cols-md-5 g-3">
-		<div th:each="taskTitle : ${taskTitle}" class="col-sm-4">
-			<span th:switch="${taskTitle.isDone()}">
+		<div th:each="taskTitle, index : ${taskTitle}" class="col-sm-4">
+			<span th:switch="${taskTitle.isCompleted()}">
 
 				<div th:case="true" class="card text-white bg-success mb-3" style="max-width: 18rem;">
 					<div class="card-header" th:text="'Day ' + ${taskTitle.getId()}">Day #</div>

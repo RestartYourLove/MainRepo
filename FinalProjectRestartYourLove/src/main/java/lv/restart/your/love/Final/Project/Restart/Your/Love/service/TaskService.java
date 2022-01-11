@@ -14,6 +14,7 @@ public class TaskService {
     private TaskRepository taskRepository;
 
     public List<Task> getAllTasks() {
+
         return taskRepository.findAll();
     }
 
@@ -23,7 +24,5 @@ public class TaskService {
         return taskRepository.findById(id);
     }
 
-    //not finished???
-    public void save(Task task) {
-    }
+
 }

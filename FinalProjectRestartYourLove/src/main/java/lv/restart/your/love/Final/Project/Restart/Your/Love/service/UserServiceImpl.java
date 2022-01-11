@@ -1,19 +1,14 @@
 package lv.restart.your.love.Final.Project.Restart.Your.Love.service;
 
 import lv.restart.your.love.Final.Project.Restart.Your.Love.dto.UserSignUpDto;
+import lv.restart.your.love.Final.Project.Restart.Your.Love.model.TaskStatus;
 import lv.restart.your.love.Final.Project.Restart.Your.Love.model.User;
 import lv.restart.your.love.Final.Project.Restart.Your.Love.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import javax.management.relation.Role;
-import java.util.Collection;
-import java.util.stream.Collectors;
 
 
 @Service
@@ -29,7 +24,7 @@ public class UserServiceImpl implements UserService{
     //method that saves the registered user to database through the dto class
     @Override
     public User save(UserSignUpDto signUpDto) {
-        User user = new User(signUpDto.getUsername(), passwordEncoder.encode(signUpDto.getPassword()), null);
+        User user = new User(signUpDto.getUsername(), passwordEncoder.encode(signUpDto.getPassword()));
 
         return userRepository.save(user);
     }
