@@ -1,5 +1,6 @@
 package lv.restart.your.love.Final.Project.Restart.Your.Love.controller;
 
+import lv.restart.your.love.Final.Project.Restart.Your.Love.auth.AuthHelper;
 import lv.restart.your.love.Final.Project.Restart.Your.Love.model.Task;
 import lv.restart.your.love.Final.Project.Restart.Your.Love.model.TaskStatus;
 import lv.restart.your.love.Final.Project.Restart.Your.Love.model.User;
@@ -22,6 +23,9 @@ public class TaskListController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private AuthHelper authHelper;
+
     // Get all tasks
     @GetMapping("/tasklist")
     public String getAllTasks(Model model) {
@@ -30,7 +34,7 @@ public class TaskListController {
 
         //Getting the list of tasks with their status for logged in user form user model variable taskStatus
         //(Currently user hardcoded)
-        User user = userRepository.findByUsername("liza2");
+        User user = userRepository.findByUsername(authHelper.getName());
         List<TaskStatus> userTaskStatusList = user.getTaskStatus();
 
         //Comparing tasks and their statuses in the User (model) taskStatus list --
@@ -50,16 +54,6 @@ public class TaskListController {
         return "tasklist";
 
     }
-
-//    Method to get current user's information? using the authhelper interface
-
-//    @Autowired
-//    private AuthHelper authHelper;
-//
-//    @GetMapping(value = "/username")
-//    public String currentUserName() {
-//        return authHelper.getName(); //how to get user id from this?
-//    }
 
 
 }

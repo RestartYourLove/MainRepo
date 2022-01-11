@@ -1,5 +1,6 @@
 package lv.restart.your.love.Final.Project.Restart.Your.Love.controller;
 
+import lv.restart.your.love.Final.Project.Restart.Your.Love.auth.AuthHelper;
 import lv.restart.your.love.Final.Project.Restart.Your.Love.model.Task;
 import lv.restart.your.love.Final.Project.Restart.Your.Love.model.TaskStatus;
 import lv.restart.your.love.Final.Project.Restart.Your.Love.model.User;
@@ -27,12 +28,15 @@ public class TaskDetailsController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private AuthHelper authHelper;
+
     // Get the task details by ID
     @GetMapping(value = {"/taskdetails/{id}"})
     public String getTaskById(@PathVariable(value = "id") long id, Model model) {
 
         //Getting the list of tasks with their status for specified user
-        User currentUser = userRepository.findByUsername("liza2");
+        User currentUser = userRepository.findByUsername(authHelper.getName());
         List<TaskStatus> userTaskStatusList = currentUser.getTaskStatus();
 
         //get task from the service
