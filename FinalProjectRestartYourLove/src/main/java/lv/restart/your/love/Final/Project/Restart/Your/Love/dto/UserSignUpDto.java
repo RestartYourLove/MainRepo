@@ -20,8 +20,6 @@ public class UserSignUpDto {
     private String matchingPassword;
 
     //constructors
-
-
     public UserSignUpDto() {
     }
 
@@ -33,8 +31,6 @@ public class UserSignUpDto {
 
 
     //getters & setters
-
-
     public String getUsername() {
         return username;
     }

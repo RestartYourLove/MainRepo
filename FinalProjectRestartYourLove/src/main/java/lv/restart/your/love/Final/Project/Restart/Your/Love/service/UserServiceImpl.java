@@ -22,17 +22,12 @@ public class UserServiceImpl implements UserService{
     private BCryptPasswordEncoder passwordEncoder;
 
     //method that saves the registered user to database through the dto class
-//    @Override
-//    public User save(UserSignUpDto signUpDto) {
-//        User user = new User(signUpDto.getUsername(), passwordEncoder.encode(signUpDto.getPassword()));
-//
-//        return userRepository.save(user);
-//    }
+    @Override
+    public User save(UserSignUpDto signUpDto) {
+        User user = new User(signUpDto.getUsername(), passwordEncoder.encode(signUpDto.getPassword()));
 
-//    @Override
-//    public User registerNewUserAccount(UserSignUpDto signUpDto) throws UserAlreadyExistException {
-//        return null;
-//    }
+        return userRepository.save(user);
+    }
 
     //METHOD THAT PERFORMS THE LOGIN BY FINDING THE USERNAME IN DATABASE
     @Override
@@ -45,15 +40,11 @@ public class UserServiceImpl implements UserService{
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), user.getAuthorities());
     }
 
-    @Override
-    public User save(UserSignUpDto signUpDto) {
-        return null;
-    }
 
     @Override
     public User registerNewUserAccount(UserSignUpDto signUpDto) throws UserAlreadyExistException {
         if (usernameExist(signUpDto.getUsername())) {
-            throw new UserAlreadyExistException("There is an account with that email address: "
+            throw new UserAlreadyExistException("There is an account with that username: "
                     + signUpDto.getUsername());
         }
 

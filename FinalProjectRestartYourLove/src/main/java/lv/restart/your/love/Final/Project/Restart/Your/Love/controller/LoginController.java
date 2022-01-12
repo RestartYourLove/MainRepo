@@ -18,7 +18,6 @@ public class LoginController {
         if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
             return "login";
         }
-
         return "redirect:/tasklist";
     }
 }

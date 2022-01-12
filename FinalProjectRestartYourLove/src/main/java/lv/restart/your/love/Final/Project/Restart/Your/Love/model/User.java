@@ -6,7 +6,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.util.*;
 
-
+/**
+ * User Class to define user object and to create a constraint with DB table "user".
+ */
 @Entity
 @Table(name = "user", uniqueConstraints = @UniqueConstraint(columnNames = "username"))
 public class User implements UserDetails {
@@ -36,8 +38,6 @@ public class User implements UserDetails {
         this.password = password;
         this.taskStatus = taskStatus;
     }
-
-
 
     //Getters and setters
     public Long getId() {
