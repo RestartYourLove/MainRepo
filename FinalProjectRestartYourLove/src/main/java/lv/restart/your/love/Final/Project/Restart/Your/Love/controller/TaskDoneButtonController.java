@@ -49,7 +49,7 @@ public class TaskDoneButtonController {
         model.addAttribute("myTask", myTask);
 
 
-        return "taskdetails";
+        return "redirect:/taskdetails/{id}";
     }
 
 }
