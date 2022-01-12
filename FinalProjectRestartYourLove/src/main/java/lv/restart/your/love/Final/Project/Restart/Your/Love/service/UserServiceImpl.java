@@ -1,7 +1,7 @@
 package lv.restart.your.love.Final.Project.Restart.Your.Love.service;
 
 import lv.restart.your.love.Final.Project.Restart.Your.Love.dto.UserSignUpDto;
-import lv.restart.your.love.Final.Project.Restart.Your.Love.model.TaskStatus;
+import lv.restart.your.love.Final.Project.Restart.Your.Love.error.UserAlreadyExistException;
 import lv.restart.your.love.Final.Project.Restart.Your.Love.model.User;
 import lv.restart.your.love.Final.Project.Restart.Your.Love.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,12 +22,12 @@ public class UserServiceImpl implements UserService{
     private BCryptPasswordEncoder passwordEncoder;
 
     //method that saves the registered user to database through the dto class
-    @Override
-    public User save(UserSignUpDto signUpDto) {
-        User user = new User(signUpDto.getUsername(), passwordEncoder.encode(signUpDto.getPassword()));
-
-        return userRepository.save(user);
-    }
+//    @Override
+//    public User save(UserSignUpDto signUpDto) {
+//        User user = new User(signUpDto.getUsername(), passwordEncoder.encode(signUpDto.getPassword()));
+//
+//        return userRepository.save(user);
+//    }
 
 //    @Override
 //    public User registerNewUserAccount(UserSignUpDto signUpDto) throws UserAlreadyExistException {
@@ -46,14 +46,24 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public User save(UserSignUpDto signUpDto) {
+        return null;
+    }
+
+    @Override
     public User registerNewUserAccount(UserSignUpDto signUpDto) throws UserAlreadyExistException {
         if (usernameExist(signUpDto.getUsername())) {
             throw new UserAlreadyExistException("There is an account with that email address: "
                     + signUpDto.getUsername());
         }
 
-        // the rest of the registration operation
+        User user = new User(signUpDto.getUsername(), passwordEncoder.encode(signUpDto.getPassword()));
+        return userRepository.save(user);
+
     }
+
+
+
     private boolean usernameExist(String username) {
         return userRepository.findByUsername(username) != null;
     }

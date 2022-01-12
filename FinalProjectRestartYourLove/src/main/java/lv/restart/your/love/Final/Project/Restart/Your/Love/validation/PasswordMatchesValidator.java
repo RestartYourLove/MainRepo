@@ -2,6 +2,9 @@ package lv.restart.your.love.Final.Project.Restart.Your.Love.validation;
 
 import lv.restart.your.love.Final.Project.Restart.Your.Love.dto.UserSignUpDto;
 
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
+
 public class PasswordMatchesValidator implements ConstraintValidator<PasswordMatches, Object> {
 
     @Override

@@ -1,13 +1,12 @@
 package lv.restart.your.love.Final.Project.Restart.Your.Love.controller;
 
 import lv.restart.your.love.Final.Project.Restart.Your.Love.dto.UserSignUpDto;
+import lv.restart.your.love.Final.Project.Restart.Your.Love.error.UserAlreadyExistException;
 import lv.restart.your.love.Final.Project.Restart.Your.Love.model.User;
 import lv.restart.your.love.Final.Project.Restart.Your.Love.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,12 +39,6 @@ public class SignUpController {
         return "signup";
     }
 
-//    @GetMapping
-//    public String showSignUpForm() {
-//
-//        return "signup";
-//    }
-
 //    by Liza
 //    @PostMapping
 //    public String registerUserAccount(@ModelAttribute("user")UserSignUpDto signUpDto) {
@@ -53,18 +46,16 @@ public class SignUpController {
 //        return "redirect:/signup?success";
 //    }
 
-    //maybe @Valid is correct?
     @PostMapping("/user/registration")
     public ModelAndView registerUserAccount(@ModelAttribute("user") @Validated UserSignUpDto signUpDto,
-            HttpServletRequest request, Errors errors) {
+            HttpServletRequest request) {
 
-        try {
-            User registered = userService.registerNewUserAccount(signUpDto);
-        } catch (UserAlreadyExistException uaeEx) {
-            ModelAndView mav;
-            mav.addObject("message", "An account for that username/email already exists.");
-            return mav;
-        }
+//        try {
+//            User registered = userService.registerNewUserAccount(signUpDto);
+//        } catch (UserAlreadyExistException uaeEx) {
+//            mav.addObject("message", "An account for that username/email already exists.");
+//            return mav;
+//        }
 
         return new ModelAndView("successRegister", "user", signUpDto);
     }
