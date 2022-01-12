@@ -30,6 +30,7 @@ public class TaskStatus implements Serializable {
     }
 
     public TaskStatus(User user, Task task, boolean statusDone) {
+        this.id = new TaskStatusKey(user.getId(), task.getId());
         this.user = user;
         this.task = task;
         this.statusDone = statusDone;
