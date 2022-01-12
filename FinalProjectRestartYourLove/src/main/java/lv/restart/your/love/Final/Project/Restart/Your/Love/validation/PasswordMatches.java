@@ -1,6 +1,5 @@
 package lv.restart.your.love.Final.Project.Restart.Your.Love.validation;
 
-import javax.validation.*;
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;

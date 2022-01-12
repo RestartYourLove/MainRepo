@@ -47,23 +47,26 @@ public class SignUpController {
 //    }
 
 //    by Liza
-    @PostMapping
-    public String registerUserAccount(@ModelAttribute("user")UserSignUpDto signUpDto) {
-        userService.save(signUpDto);
-        return "redirect:/signup?success";
-    }
+//    @PostMapping
+//    public String registerUserAccount(@ModelAttribute("user")UserSignUpDto signUpDto) {
+//        userService.save(signUpDto);
+//        return "redirect:/signup?success";
+//    }
 
     //maybe @Valid is correct?
+    @PostMapping("/user/registration")
     public ModelAndView registerUserAccount(@ModelAttribute("user") @Validated UserSignUpDto signUpDto,
-                                            HttpServletRequest request, Errors errors) {
+            HttpServletRequest request, Errors errors) {
+
         try {
-            User registered = userService.registerNewUserAccount(userSignUpDto());
+            User registered = userService.registerNewUserAccount(signUpDto);
         } catch (UserAlreadyExistException uaeEx) {
+            ModelAndView mav;
             mav.addObject("message", "An account for that username/email already exists.");
             return mav;
         }
 
-        // rest of the implementation
+        return new ModelAndView("successRegister", "user", signUpDto);
     }
 
 

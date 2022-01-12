@@ -7,17 +7,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 public interface UserService extends UserDetailsService {
     User save(UserSignUpDto signUpDto);
 
-    //some new stuff - new use username data check
-    @Override
-    public User registerNewUserAccount(UserSignUpDto signUpDto) throws UserAlreadyExistException {
-        if (usernameExist(signUpDto.getUsername())) {
-            throw new UserAlreadyExistException("There is an account with that username: "
-                    + signUpDto.getUsername());
-        }
+    //method that saves the registered user to database through the dto class
 
-        // the rest of the registration operation --?
-    }
-    private boolean usernameExist(String username) {
-        return userRepository.findByUsername(username) != null;
-    }
+    User registerNewUserAccount(UserSignUpDto signUpDto) throws UserAlreadyExistException;
 }
