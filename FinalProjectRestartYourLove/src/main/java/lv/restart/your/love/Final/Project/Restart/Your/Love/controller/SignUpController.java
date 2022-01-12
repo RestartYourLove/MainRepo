@@ -20,13 +20,11 @@ public class SignUpController {
     //method that returns an empty user object used while registering
     @ModelAttribute("user")
     public UserSignUpDto userSignUpDto() {
-
         return new UserSignUpDto();
     }
 
     @GetMapping
     public String showSignUpForm() {
-
         return "signup";
     }
 

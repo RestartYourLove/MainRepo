@@ -32,6 +32,7 @@ public class TaskDoneButtonController {
     private AuthHelper authHelper;
 
 
+    //Mark status as done and add it to db join table
     @GetMapping(value = {"/done/{id}"})
     public String markDone(@PathVariable(value = "id") long id, Model model) {
 
@@ -52,4 +53,25 @@ public class TaskDoneButtonController {
         return "redirect:/taskdetails/{id}";
     }
 
+
+    //Undo mark task status done and remove it from db join table
+    @GetMapping(value = {"/notdone/{id}"})
+    public String markNotDone(@PathVariable(value = "id") long id, Model model) {
+
+        //Get the currently logged in user
+        User currentUser = userRepository.findByUsername(authHelper.getName());
+
+        //get currently opened task by id from the service
+        Task myTask = taskService.findById(id);
+
+        //save the TaskStatus and update the task_status table in db
+        TaskStatus ts1 = new TaskStatus(currentUser, myTask ,true);
+        taskStatusRepository.delete(ts1);
+
+        //set task as a model attribute to pre-populate the form
+        model.addAttribute("myTask", myTask);
+
+
+        return "redirect:/taskdetails/{id}";
+    }
 }
