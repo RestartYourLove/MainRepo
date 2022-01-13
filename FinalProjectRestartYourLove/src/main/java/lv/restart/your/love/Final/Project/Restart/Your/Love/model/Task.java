@@ -1,10 +1,12 @@
 package lv.restart.your.love.Final.Project.Restart.Your.Love.model;
 
 import javax.persistence.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 @Entity
-@Table(name = "task_type")
+@Table(name = "task")
 public class Task {
 
     @Id
@@ -12,6 +14,9 @@ public class Task {
     private Long id;
     private String title;
     private String description;
+
+    @Column(name = "image_link")
+    private String imageLink;
 
     @OneToMany(mappedBy = "task", cascade = CascadeType.ALL)
     private List<TaskStatus> taskStatus = new ArrayList<>();
@@ -30,11 +35,25 @@ public class Task {
         this.description = description;
     }
 
+    public Task(String title, String description, String imageLink) {
+        this.title = title;
+        this.description = description;
+        this.imageLink = imageLink;
+    }
+
     public Task(Long id, String title, String description, List<TaskStatus> taskStatus) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.taskStatus = taskStatus;
+    }
+
+    public String getImageLink() {
+        return imageLink;
+    }
+
+    public void setImageLink(String imageLink) {
+        this.imageLink = imageLink;
     }
 
     public boolean isCompleted() {
