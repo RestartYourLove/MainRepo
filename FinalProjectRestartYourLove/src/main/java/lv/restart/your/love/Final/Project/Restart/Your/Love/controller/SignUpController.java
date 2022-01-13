@@ -4,14 +4,9 @@ import lv.restart.your.love.Final.Project.Restart.Your.Love.dto.UserSignUpDto;
 import lv.restart.your.love.Final.Project.Restart.Your.Love.error.UserAlreadyExistException;
 import lv.restart.your.love.Final.Project.Restart.Your.Love.model.User;
 import lv.restart.your.love.Final.Project.Restart.Your.Love.service.UserService;
-import lv.restart.your.love.Final.Project.Restart.Your.Love.validation.PasswordMatchesValidator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -53,12 +48,12 @@ public class SignUpController {
             User registered = userService.registerNewUserAccount(signUpDto);
         } catch (UserAlreadyExistException uaeEx) {
             mav.addObject("message", "An account for that username already exists.");
-            mav.setViewName("errorRegister");
+            mav.setViewName("errorSignup");
             return mav;
         }
 
 
-        return new ModelAndView("successRegister", "user", signUpDto);
+        return new ModelAndView("successSignup", "user", signUpDto);
 
     }
 
