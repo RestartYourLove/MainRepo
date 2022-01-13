@@ -47,8 +47,12 @@
 
     <p>Task status: <span th:text = "${myTask.printStatus()}"></span></p>
 
-    <a class="btn btn-light btn-xl" href="#" th:href="@{/done/{id}(id=${myTask.getId()})}" >Mark task Done</a> <a class="btn btn-light btn-xl" href="/tasklist">Back to the list</a>
-    <a class="btn btn-danger btn-xl" href="#" th:href="@{/notdone/{id}(id=${myTask.getId()})}" >Unmark done</a>
+    <!-- switch case to display either one or the other button according to task status -->
+    <span th:switch="${myTask.isCompleted()}">
+    <a th:case="false" class="btn btn-success btn-xl" href="#" th:href="@{/done/{id}(id=${myTask.getId()})}" >Mark task Done</a>
+    <a th:case="true" class="btn btn-danger btn-xl" href="#" th:href="@{/notdone/{id}(id=${myTask.getId()})}" >Unmark done</a> <a class="btn btn-light btn-xl" href="/tasklist">Back to the list</a>
+    </span>
+
 </div>
 
 </body>
