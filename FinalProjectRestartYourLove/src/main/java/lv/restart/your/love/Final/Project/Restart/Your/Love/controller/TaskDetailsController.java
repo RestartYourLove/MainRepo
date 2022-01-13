@@ -58,20 +58,4 @@ public class TaskDetailsController {
     }
 
 
-
-//    // Update task status (done / not done)
-//    @PutMapping("/taskdetails/{id}")
-//    public ResponseEntity<Object> updateTask(@RequestBody Task task, @PathVariable long id) {
-//
-//        Optional<Task> myTask = Optional.ofNullable(taskService.findById(id));
-//
-//        if (!myTask.isPresent())
-//            return ResponseEntity.notFound().build();
-//
-//        task.setStatus();
-//
-//        taskService.save(task);
-//
-//        return ResponseEntity.noContent().build();
-//    }
 }

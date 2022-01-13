@@ -21,9 +21,8 @@ public class TaskStatus implements Serializable {
     @JoinColumn(name = "task_id")
     private Task task;
 
-//    @Column(name = "status_done", columnDefinition = "boolean default false")
-    @Column(name = "status_done")
-    private boolean statusDone;
+    @Column(name = "status_done", columnDefinition = "boolean default true")
+    private boolean statusDone = true;
 
 
     //constructors
@@ -31,6 +30,7 @@ public class TaskStatus implements Serializable {
     }
 
     public TaskStatus(User user, Task task, boolean statusDone) {
+        this.id = new TaskStatusKey(user.getId(), task.getId());
         this.user = user;
         this.task = task;
         this.statusDone = statusDone;
