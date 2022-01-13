@@ -31,30 +31,34 @@
                 <div class="alert alert-info">Registration successful!</div>
             </div>
 
-            <!-- error message -->
-            <div th:if="${param.error}">
-                <div class="alert alert-danger">Username already exists!</div>
-            </div>
 
             <h1>Registration</h1>
 
             <form th:action="@{/signup}" method="post" th:object="${user}">
+
+
                 <div class="form-group">
                     <label class="control-label" for="username"> Username: </label>
                     <input id="username" class="form-control" th:field="*{username}"
                            required autofocus="autofocus"/>
                 </div>
 
-                <div class="form-group">
-                    <label class="control-label" for="password"> Password: </label> <input
-                        id="password" class="form-control" type="password"
-                        th:field="*{password}" required autofocus="autofocus"/>
+                <div>
+                    <label class="control-label" for="password"> Password (min length: 6):</label>
+                    <input id="password" class="form-control" type="password" minlength="6" onkeyup='check();'
+                           th:field="*{password}" required autofocus="autofocus"/>
+                </div>
+                <div>
+                    <label class="control-label" for="password"> Confirm password:</label>
+                    <input id="matchingPassword" class="form-control" type="password" onkeyup='check();'
+                           th:field="*{matchingPassword}" required autofocus="autofocus"/>
+                    <span id='message'></span>
                 </div>
 
                 <br>
 
                 <div class="form-group">
-                    <button type="submit" class="btn btn-success">Register</button>
+                    <button type="submit" id="submit" class="btn btn-success" disabled>Register</button>
                     <span>Already registered? <a href="/" th:href="@{/login}">Login here</a></span>
                 </div>
             </form>
@@ -65,5 +69,28 @@
 </div>
 
 
+<script>
+    var check = function() {
+if (document.getElementById('password').value ==
+document.getElementById('matchingPassword').value) {
+document.getElementById('message').style.color = 'green';
+document.getElementById('message').innerHTML = 'Matching';
+document.getElementById('submit').disabled = false;
+} else {
+document.getElementById('message').style.color = 'red';
+document.getElementById('message').innerHTML = 'Not matching';
+document.getElementById('submit').disabled = true;
+}
+}
+
+</script>
+
+
+
+
 </body>
 </html>
+
+
+
+
