@@ -42,8 +42,8 @@
 				</div>
 
 				<div>
-					<label class="control-label" for="password"> Password:</label>
-					<input id="password" class="form-control" type="password" onkeyup='check();'
+					<label class="control-label" for="password"> Password (min length: 6):</label>
+					<input id="password" class="form-control" type="password" minlength="6" onkeyup='check();'
 						   th:field="*{password}" required autofocus="autofocus"/>
 				</div>
 				<div>
