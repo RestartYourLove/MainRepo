@@ -4,12 +4,14 @@ import lv.restart.your.love.Final.Project.Restart.Your.Love.dto.UserSignUpDto;
 import lv.restart.your.love.Final.Project.Restart.Your.Love.error.UserAlreadyExistException;
 import lv.restart.your.love.Final.Project.Restart.Your.Love.model.User;
 import lv.restart.your.love.Final.Project.Restart.Your.Love.service.UserService;
+import lv.restart.your.love.Final.Project.Restart.Your.Love.validation.PasswordMatchesValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -42,42 +44,22 @@ public class SignUpController {
         return "signup";
     }
 
-//    by Liza
-//    @PostMapping
-//    public String registerUserAccount(@ModelAttribute("user")UserSignUpDto signUpDto) {
-//        userService.save(signUpDto);
-//        return "redirect:/signup?success";
-//    }
-
-//    @PostMapping
-//    public String registerUserAccount(@ModelAttribute("user") @Valid UserSignUpDto signUpDto, HttpServletRequest request, Errors errors) {
-//
-//        if (signUpDto.getUsername()!=userService.loadUserByUsername(signUpDto.getUsername()).getUsername()) {
-//            userService.save(signUpDto);
-//            return "redirect:/signup?success";
-//        }
-//
-////        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-////        if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
-////            return "login";
-////        }
-//        System.out.println("error");
-//        return "redirect:/signup?error";
-//    }
 
     @PostMapping
     public ModelAndView registerUserAccount(@ModelAttribute("user") @Valid UserSignUpDto signUpDto, HttpServletRequest request, ModelAndView mav,
-                                            Errors errors) {
+                                            Errors errors){
 
         try {
             User registered = userService.registerNewUserAccount(signUpDto);
         } catch (UserAlreadyExistException uaeEx) {
-            mav.addObject("message", "An account for that username/email already exists.");
+            mav.addObject("message", "An account for that username already exists.");
+            mav.setViewName("errorRegister");
             return mav;
         }
-        userService.save(signUpDto);
+
+
         return new ModelAndView("successRegister", "user", signUpDto);
-        //successRegister.html --> from tutorial
+
     }
 
 }
