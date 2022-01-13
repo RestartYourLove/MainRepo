@@ -1,13 +1,7 @@
 package lv.restart.your.love.Final.Project.Restart.Your.Love.dto;
 
 import com.sun.istack.NotNull;
-import lv.restart.your.love.Final.Project.Restart.Your.Love.model.Task;
-import lv.restart.your.love.Final.Project.Restart.Your.Love.model.TaskStatus;
 import lv.restart.your.love.Final.Project.Restart.Your.Love.validation.PasswordMatches;
-
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
 
 @PasswordMatches
 public class UserSignUpDto {
@@ -26,7 +20,6 @@ public class UserSignUpDto {
     public UserSignUpDto(String username, String password, String matchingPassword) {
         this.username = username;
         this.password = password;
-//        this.matchingPassword = matchingPassword;
     }
 
 

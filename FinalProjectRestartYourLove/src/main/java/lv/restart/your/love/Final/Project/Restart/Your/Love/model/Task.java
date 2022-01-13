@@ -13,7 +13,7 @@ public class Task {
     private String title;
     private String description;
 
-    @OneToMany(mappedBy = "task")
+    @OneToMany(mappedBy = "task", cascade = CascadeType.ALL)
     private List<TaskStatus> taskStatus = new ArrayList<>();
     //this list includes the tasks and their statuses. Your task and status fields are included in private List<TaskStatus> taskStatus.
 
@@ -23,6 +23,11 @@ public class Task {
 
     //constructors
     public Task() {
+    }
+
+    public Task(String title, String description) {
+        this.title = title;
+        this.description = description;
     }
 
     public Task(Long id, String title, String description, List<TaskStatus> taskStatus) {
@@ -80,6 +85,12 @@ public class Task {
     public List<TaskStatus> addTaskStatus(TaskStatus taskStatus) {
         this.taskStatus.add(taskStatus);
         return this.taskStatus;
+    }
+
+    public void addUser(User user) {
+        TaskStatus myTaskStatus = new TaskStatus(user, this, true);
+        taskStatus.add(myTaskStatus);
+        user.getTaskStatus().add(myTaskStatus);
     }
 
 

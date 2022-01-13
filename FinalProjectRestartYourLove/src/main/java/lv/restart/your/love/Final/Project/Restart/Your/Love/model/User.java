@@ -19,7 +19,7 @@ public class User implements UserDetails {
     private String username;
     private String password;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<TaskStatus> taskStatus = new ArrayList<>();
     //this list includes the tasks and their statuses. Your task and status fields are included in private List<TaskStatus> taskStatus.
 
