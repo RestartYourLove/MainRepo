@@ -35,35 +35,45 @@
 	</div>
 </nav>
 
-
+<!-- body section of the page bootstrap v5.1 -->
 <section class="bg-white pt-5 pb-5 shadow-sm">
 	<div class="container">
 		<div class="col-12">
 			<h3 class="text-uppercase border-bottom mb-4">Your tasks: </h3>
 		</div>
 
-
+		<!-- rows bootstrap v5.1 -->
 		<div class="row row-cols-1 row-cols-sm-5 g-3">
+			<!-- thymeleaf loop through all saved tasks -->
 			<div th:each="taskTitle, index : ${taskTitle}">
+			<!-- switch case depending on weather a task is marked done or not to choose which card style to show -->
 			<span th:switch="${taskTitle.isCompleted()}">
 
+
+				<!-- card for a task that's marked DONE bootstrap v5.1 -->
 				<div th:case="true" class="card text-white bg-success mb-3 h-100">
 					<div class="card-header" th:text="'Day ' + ${taskTitle.getId()}">Day #</div>
 					<div class="card-body">
-						<h5 style="text-align: center; font-style: bold; vertical-align: middle;" th:text="${taskTitle.getTitle()}">"Task title"</h5>
+						<br>
+						<h5 class="card-title" style="text-align: center; font-style: bold; vertical-align: middle;" th:text="${taskTitle.getTitle()}">"Task title"</h5>
 						<a href="#" th:href="@{taskdetails/{id}(id=${taskTitle.getId()})}" class="stretched-link"></a>
 					</div>
 					<div class="card-footer" style="color: white; font-style: italic; text-align: right; font-size: small; ">Done</div>
 				</div>
 
+				<!-- card for a task that's marked NOT DONE bootstrap v5.1 -->
 				<div th:case="false" class="card text-dark bg-light mb-3 h-100">
 					<div class="card-header" th:text="'Day ' + ${taskTitle.getId()}">Day #</div>
 					<div class="card-body">
-						<h5 style="text-align: center; font-style: bold; vertical-align: middle;" th:text="${taskTitle.getTitle()}">"Task title"</h5>
+						<br>
+						<h5 class="card-title" style="text-align: center; font-style: bold; vertical-align: middle;" th:text="${taskTitle.getTitle()}">"Task title"</h5>
 						<a href="#" th:href="@{taskdetails/{id}(id=${taskTitle.getId()})}" class="stretched-link"></a>
 					</div>
 					<div class="card-footer" style="color: black; text-align: right; font-size: small; ">Not done</div>
 				</div>
+
+
+
 
 			</span>
 			</div>
