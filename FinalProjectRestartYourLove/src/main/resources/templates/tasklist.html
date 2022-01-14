@@ -28,67 +28,50 @@
 			</ul>
 			<span class="navbar-text">
                     Welcome <span sec:authentication="principal.username"> User</span>!
-                    <button type="button" class="btn btn-success btn-sm" sec:authorize="isAuthenticated()"><a style="text-decoration:none; color: white" th:href="@{/logout}">Log out</a></button>
-
+                    <button type="button" class="btn btn-success btn-sm" sec:authorize="isAuthenticated()"><a
+							style="text-decoration:none; color: white" th:href="@{/logout}">Log out</a></button>
             </span>
 		</div>
 	</div>
 </nav>
 
 
-<br>
-<br>
-
-<div class="container">
-	<h1>Your tasks: </h1>
-	<!--    <h3> TITLE BY INDEX 0 FROM DATABASE:</h3>-->
-	<!--    <div th:text = "${taskTitle[0].getTitle()}"></div>-->
-
-	<!--    <h3> LOOPED LIST OF TASK TITLES FROM DATABASE:</h3>-->
-	<!--    <h4 th:each="taskTitle : ${taskTitle}" th:text="${taskTitle.getTitle()}"></h4>-->
-	<br>
-
-	<!--	Could be used to change text on button on taskdetails page when task is marked done etc-->
-	<!--		<tr th:each="taskTitle : ${taskTitle}">-->
-	<!--			<td th:if="${taskTitle.isDone()} == true">Done</td>-->
-	<!--			<td th:if="${taskTitle.isDone()} == false">Mark as Done</td>-->
-	<!--		</tr>-->
+<section class="bg-white pt-5 pb-5 shadow-sm">
+	<div class="container">
+		<div class="col-12">
+			<h3 class="text-uppercase border-bottom mb-4">Your tasks: </h3>
+		</div>
 
 
-</div>
-
-
-<div class="container">
-
-	<div class="row row-cols-1 row-cols-md-5 g-3">
-		<div th:each="taskTitle, index : ${taskTitle}" class="col-sm-4">
+		<div class="row row-cols-1 row-cols-sm-5 g-3">
+			<div th:each="taskTitle, index : ${taskTitle}">
 			<span th:switch="${taskTitle.isCompleted()}">
 
-				<div th:case="true" class="card text-white bg-success mb-3" style="max-width: 18rem;">
+				<div th:case="true" class="card text-white bg-success mb-3 h-100">
 					<div class="card-header" th:text="'Day ' + ${taskTitle.getId()}">Day #</div>
 					<div class="card-body">
-						<h5 class="card-title" th:text="${taskTitle.getTitle()}">Task title</h5>
-						<p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-							card's content.</p>
+						<h5 style="text-align: center; font-style: bold; vertical-align: middle;" th:text="${taskTitle.getTitle()}">"Task title"</h5>
 						<a href="#" th:href="@{taskdetails/{id}(id=${taskTitle.getId()})}" class="stretched-link"></a>
 					</div>
+					<div class="card-footer" style="color: white; font-style: italic; text-align: right; font-size: small; ">Done</div>
 				</div>
 
-				<div th:case="false" class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+				<div th:case="false" class="card text-dark bg-light mb-3 h-100">
 					<div class="card-header" th:text="'Day ' + ${taskTitle.getId()}">Day #</div>
 					<div class="card-body">
-						<h5 class="card-title" th:text="${taskTitle.getTitle()}">Task title</h5>
-						<p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-							card's content.</p>
+						<h5 style="text-align: center; font-style: bold; vertical-align: middle;" th:text="${taskTitle.getTitle()}">"Task title"</h5>
 						<a href="#" th:href="@{taskdetails/{id}(id=${taskTitle.getId()})}" class="stretched-link"></a>
 					</div>
+					<div class="card-footer" style="color: black; text-align: right; font-size: small; ">Not done</div>
 				</div>
 
 			</span>
+			</div>
 		</div>
+
 	</div>
 
-</div>
+</section>
 
 
 </body>
