@@ -18,10 +18,10 @@ public class LoginController {
     @GetMapping("/login")
     public String login(Model model) {
 
-        logger.debug("User login into existing profile.");
+        logger.debug("User login into profile...");
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
-            logger.error("Authentication not successful.");
+            logger.error("Authentication cannot be empty ");
             return "login";
         }
         logger.info("User - " + authentication.getName() + " - logged in.");

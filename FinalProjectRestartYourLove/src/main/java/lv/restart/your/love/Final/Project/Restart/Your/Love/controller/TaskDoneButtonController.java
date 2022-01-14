@@ -34,7 +34,7 @@ public class TaskDoneButtonController {
     @GetMapping(value = {"/done/{id}"})
     public String markDone(@PathVariable(value = "id") long id, Model model) {
 
-        logger.debug("Set task status as Done.");
+        logger.debug("Setting task status as Done...");
 
         //Get the currently logged in user
         User currentUser = userRepository.findByUsername(authHelper.getName());
@@ -58,7 +58,7 @@ public class TaskDoneButtonController {
     @GetMapping(value = {"/notdone/{id}"})
     public String markNotDone(@PathVariable(value = "id") long id, Model model) {
 
-        logger.debug("Set task status as Not Done.");
+        logger.debug("Setting task status as Not Done...");
 
         //Get the currently logged in user
         User currentUser = userRepository.findByUsername(authHelper.getName());

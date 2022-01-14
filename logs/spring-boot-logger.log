@@ -51,3 +51,15 @@
 2022-01-14 17:40:36,765 ERROR lv.restart.your.love.Final.Project.Restart.Your.Love.controller.LoginController [http-nio-8080-exec-7] Authentication not successful.
 2022-01-14 17:40:36,928 DEBUG lv.restart.your.love.Final.Project.Restart.Your.Love.controller.LoginController [http-nio-8080-exec-9] User login
 2022-01-14 17:40:36,929 ERROR lv.restart.your.love.Final.Project.Restart.Your.Love.controller.LoginController [http-nio-8080-exec-9] Authentication not successful.
+2022-01-14 18:05:27,075 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting Application using Java 11.0.11 on DESKTOP-KQ4S1ME with PID 15948 (F:\SGT_2\MainRepo\FinalProjectRestartYourLove\target\classes started by Admin in F:\SGT_2\MainRepo)
+2022-01-14 18:05:27,076 DEBUG org.springframework.boot.StartupInfoLogger [restartedMain] Running with Spring Boot v2.6.1, Spring v5.3.13
+2022-01-14 18:05:27,076 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2022-01-14 18:05:35,765 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started Application in 10.567 seconds (JVM running for 12.31)
+2022-01-14 18:05:42,669 DEBUG lv.restart.your.love.Final.Project.Restart.Your.Love.controller.LoginController [http-nio-8080-exec-3] User login into existing profile.
+2022-01-14 18:05:42,669 ERROR lv.restart.your.love.Final.Project.Restart.Your.Love.controller.LoginController [http-nio-8080-exec-3] Authentication not successful.
+2022-01-14 18:06:40,355 DEBUG lv.restart.your.love.Final.Project.Restart.Your.Love.controller.TaskDoneButtonController [http-nio-8080-exec-7] Set task status as Not Done.
+2022-01-14 18:06:40,899 INFO lv.restart.your.love.Final.Project.Restart.Your.Love.controller.TaskDoneButtonController [http-nio-8080-exec-7] User Liza set task 'Discover new flavors' as Not Done.
+2022-01-14 18:07:04,100 DEBUG lv.restart.your.love.Final.Project.Restart.Your.Love.controller.TaskDoneButtonController [http-nio-8080-exec-10] Set task status as Done.
+2022-01-14 18:07:04,586 INFO lv.restart.your.love.Final.Project.Restart.Your.Love.controller.TaskDoneButtonController [http-nio-8080-exec-10] User Liza set task 'Discover new flavors' as Done.
+2022-01-14 18:07:18,185 DEBUG lv.restart.your.love.Final.Project.Restart.Your.Love.controller.LoginController [http-nio-8080-exec-3] User login into existing profile.
+2022-01-14 18:07:18,185 ERROR lv.restart.your.love.Final.Project.Restart.Your.Love.controller.LoginController [http-nio-8080-exec-3] Authentication not successful.
