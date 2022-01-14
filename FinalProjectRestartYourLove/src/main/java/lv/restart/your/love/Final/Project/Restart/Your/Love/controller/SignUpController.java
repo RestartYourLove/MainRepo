@@ -4,6 +4,8 @@ import lv.restart.your.love.Final.Project.Restart.Your.Love.dto.UserSignUpDto;
 import lv.restart.your.love.Final.Project.Restart.Your.Love.error.UserAlreadyExistException;
 import lv.restart.your.love.Final.Project.Restart.Your.Love.model.User;
 import lv.restart.your.love.Final.Project.Restart.Your.Love.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,9 +24,10 @@ import javax.validation.Valid;
 @RequestMapping("/signup")
 public class SignUpController {
 
+    Logger logger = LoggerFactory.getLogger(SignUpController.class);
+
     @Autowired
     private UserService userService;
-
 
     //method that returns an empty user object used while registering
     @ModelAttribute("user")
@@ -43,10 +46,12 @@ public class SignUpController {
     @PostMapping
     public ModelAndView registerUserAccount(@ModelAttribute("user") @Valid UserSignUpDto signUpDto, HttpServletRequest request, ModelAndView mav,
                                             Errors errors){
-
+        logger.debug("Registering User account.");
         try {
             User registered = userService.registerNewUserAccount(signUpDto);
+            logger.info("User registered with username: " + signUpDto.getUsername());
         } catch (UserAlreadyExistException uaeEx) {
+            logger.error("Username - " + signUpDto.getUsername() + " - already exists.");
             mav.addObject("message", "An account for that username already exists.");
             mav.setViewName("errorSignup");
             return mav;
