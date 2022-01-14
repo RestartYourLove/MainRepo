@@ -43,6 +43,8 @@
 
     <h5>DESCRIPTION OF TASK (DAY# <span th:text = "${myTask.getId()}"></span>, TITLED "<span th:text = "${myTask.getTitle()}"></span>") : </h5>
 
+    <img th:src="@{${myTask.getImageLink()}}" alt="Task Image" />
+
     <div th:text = "${myTask.getDescription()}"></div>
 
     <p>Task status: <span th:text = "${myTask.printStatus()}"></span></p>
