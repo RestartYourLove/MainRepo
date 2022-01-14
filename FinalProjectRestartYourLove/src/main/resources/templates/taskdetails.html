@@ -43,8 +43,13 @@
 
     <h5>DESCRIPTION OF TASK (DAY# <span th:text = "${myTask.getId()}"></span>, TITLED "<span th:text = "${myTask.getTitle()}"></span>") : </h5>
 
+    <!-- Task image from url thats saved in the database -->
+    <img th:src="@{${myTask.getImageLink()}}" alt="Task Image" />
+
+    <!-- Task description-->
     <div th:text = "${myTask.getDescription()}"></div>
 
+    <!-- Shows weather this task is marked as DONE or NOT DONE for this user and displays a String "Done" or "Not done"-->
     <p>Task status: <span th:text = "${myTask.printStatus()}"></span></p>
 
     <!-- switch case to display either one or the other button according to task status -->
