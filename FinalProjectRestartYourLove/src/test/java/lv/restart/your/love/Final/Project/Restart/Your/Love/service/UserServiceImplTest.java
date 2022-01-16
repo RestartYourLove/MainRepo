@@ -1,5 +1,6 @@
 package lv.restart.your.love.Final.Project.Restart.Your.Love.service;
 
+import lv.restart.your.love.Final.Project.Restart.Your.Love.dto.UserSignUpDto;
 import lv.restart.your.love.Final.Project.Restart.Your.Love.model.User;
 import lv.restart.your.love.Final.Project.Restart.Your.Love.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -7,10 +8,13 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.aspectj.bridge.MessageUtil.fail;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
@@ -22,6 +26,8 @@ class UserServiceImplTest {
 
     @Mock
     private UserRepository userRepository;
+
+    private BCryptPasswordEncoder passwordEncoder;
 
     @BeforeEach
     void setUp() {
@@ -40,5 +46,20 @@ class UserServiceImplTest {
 
     assertNotNull(userdetails);
     assertEquals("userTest", userdetails.getUsername());
+    }
+
+    @Test
+    void loadUserByUsernameUsernameNotFoundExceptionTest() {
+        when(userRepository.findByUsername(anyString())).thenReturn(null);
+        assertThrows(UsernameNotFoundException.class,
+                ()->{
+                    userService.loadUserByUsername("user1");
+                }
+                );
+    }
+    
+    @Test
+    void saveTest() {
+        fail("Nothing was implemented!");
     }
 }
