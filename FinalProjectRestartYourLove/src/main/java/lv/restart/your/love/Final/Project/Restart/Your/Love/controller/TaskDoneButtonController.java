@@ -49,7 +49,6 @@ public class TaskDoneButtonController {
         //set task as a model attribute to pre-populate the form
         model.addAttribute("myTask", myTask);
 
-
         return "redirect:/taskdetails/{id}";
     }
 
@@ -70,7 +69,6 @@ public class TaskDoneButtonController {
 
         //set task as a model attribute to pre-populate the form
         model.addAttribute("myTask", myTask);
-
 
         return "redirect:/taskdetails/{id}";
     }

@@ -14,13 +14,11 @@ public class TaskService {
     private TaskRepository taskRepository;
 
     public List<Task> getAllTasks() {
-
         return taskRepository.findAll();
     }
 
 
     public Task findById(long id) {
-
         return taskRepository.findById(id);
     }
 

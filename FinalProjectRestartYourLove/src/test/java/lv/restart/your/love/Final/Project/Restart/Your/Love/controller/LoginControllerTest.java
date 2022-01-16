@@ -7,6 +7,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class LoginControllerTest {
 
     @Test
-    void login() {
+    void loginMethodTest() {
     }
 }

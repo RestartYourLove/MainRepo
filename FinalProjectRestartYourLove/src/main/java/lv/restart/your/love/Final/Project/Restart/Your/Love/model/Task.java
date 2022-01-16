@@ -5,6 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Task Class to define user object and to create a constraint with DB table "task".
+ */
+
 @Entity
 @Table(name = "task")
 public class Task {

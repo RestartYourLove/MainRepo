@@ -51,8 +51,6 @@ public class TaskListController {
         //set taskList as a model named "taskTitle" attribute use in html
         model.addAttribute("taskTitle", taskList);
         return "tasklist";
-
     }
-
 
 }

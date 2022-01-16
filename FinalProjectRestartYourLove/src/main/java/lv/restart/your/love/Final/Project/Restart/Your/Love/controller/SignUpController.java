@@ -25,7 +25,6 @@ public class SignUpController {
     @Autowired
     private UserService userService;
 
-
     //method that returns an empty user object used while registering
     @ModelAttribute("user")
     public UserSignUpDto userSignUpDto() {
@@ -39,11 +38,9 @@ public class SignUpController {
         return "signup";
     }
 
-
     @PostMapping
     public ModelAndView registerUserAccount(@ModelAttribute("user") @Valid UserSignUpDto signUpDto, HttpServletRequest request, ModelAndView mav,
                                             Errors errors){
-
         try {
             User registered = userService.registerNewUserAccount(signUpDto);
         } catch (UserAlreadyExistException uaeEx) {
@@ -51,10 +48,7 @@ public class SignUpController {
             mav.setViewName("errorSignup");
             return mav;
         }
-
-
         return new ModelAndView("successSignup", "user", signUpDto);
-
     }
 
 }
