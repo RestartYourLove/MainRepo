@@ -8,12 +8,11 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.test.annotation.Rollback;
 
-import static org.aspectj.bridge.MessageUtil.fail;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
@@ -26,8 +25,6 @@ class UserServiceImplTest {
 
     @Mock
     private UserRepository userRepository;
-
-    private BCryptPasswordEncoder passwordEncoder;
 
     @BeforeEach
     void setUp() {
@@ -60,6 +57,15 @@ class UserServiceImplTest {
     
     @Test
     void saveTest() {
-        fail("Nothing was implemented!");
+        UserSignUpDto signUpDto = new UserSignUpDto();
+        signUpDto.setUsername("userTest");
+        signUpDto.setPassword("qwerty");
+        User user = new User(signUpDto.getUsername(), signUpDto.getPassword());
+        userRepository.save(user);
+        assertEquals("userTest", user.getUsername());
+    }
+
+    @Test
+    void registerNewUserAccount() {
     }
 }
