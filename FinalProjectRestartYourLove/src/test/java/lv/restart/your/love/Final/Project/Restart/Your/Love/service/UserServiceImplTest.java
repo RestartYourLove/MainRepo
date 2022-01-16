@@ -1,6 +1,7 @@
 package lv.restart.your.love.Final.Project.Restart.Your.Love.service;
 
 import lv.restart.your.love.Final.Project.Restart.Your.Love.dto.UserSignUpDto;
+import lv.restart.your.love.Final.Project.Restart.Your.Love.error.UserAlreadyExistException;
 import lv.restart.your.love.Final.Project.Restart.Your.Love.model.User;
 import lv.restart.your.love.Final.Project.Restart.Your.Love.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -62,10 +63,35 @@ class UserServiceImplTest {
         signUpDto.setPassword("qwerty");
         User user = new User(signUpDto.getUsername(), signUpDto.getPassword());
         userRepository.save(user);
+        assertNotNull(user);
         assertEquals("userTest", user.getUsername());
     }
 
+
+//NOT FINISHED
     @Test
-    void registerNewUserAccount() {
+    void registerNewUserAccountTest() {
+        UserSignUpDto signUpDto = new UserSignUpDto();
+        signUpDto.setUsername("userTest");
+        signUpDto.setPassword("qwerty");
+        User notSavedUser = new User(signUpDto.getUsername(), signUpDto.getPassword());
+
+
+        UserSignUpDto signUpDto2 = new UserSignUpDto();
+        signUpDto2.setUsername("userTest2");
+        signUpDto2.setPassword("qwerty2");
+        User savedUser2 = new User(signUpDto2.getUsername(), signUpDto2.getPassword());
+        userRepository.save(savedUser2);
+
+        when(userRepository.findByUsername(savedUser2.getUsername()).equals(notSavedUser.getUsername())).thenReturn(null);
+//        userRepository.save(notSavedUser);
+
+//        assertNotNull(userdetails);
+
+
+    }
+
+    @Test
+    void registerNewUserAccountUserAlreadyExistExceptionTest() {
     }
 }
