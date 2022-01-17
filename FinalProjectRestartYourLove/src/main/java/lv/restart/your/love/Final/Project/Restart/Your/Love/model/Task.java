@@ -2,6 +2,7 @@ package lv.restart.your.love.Final.Project.Restart.Your.Love.model;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -25,6 +26,7 @@ public class Task {
     //doesn't get stored in db
     @Transient
     private boolean isCompleted;
+
 
     //constructors
     public Task() {
