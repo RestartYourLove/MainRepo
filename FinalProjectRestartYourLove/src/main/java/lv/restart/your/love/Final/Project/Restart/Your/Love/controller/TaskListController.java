@@ -6,6 +6,8 @@ import lv.restart.your.love.Final.Project.Restart.Your.Love.model.TaskStatus;
 import lv.restart.your.love.Final.Project.Restart.Your.Love.model.User;
 import lv.restart.your.love.Final.Project.Restart.Your.Love.repository.UserRepository;
 import lv.restart.your.love.Final.Project.Restart.Your.Love.service.TaskService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +17,7 @@ import java.util.List;
 
 @Controller
 public class TaskListController {
+    Logger logger = LoggerFactory.getLogger(TaskListController.class);
 
     @Autowired
     private TaskService taskService;
@@ -28,6 +31,8 @@ public class TaskListController {
     // Get all tasks
     @GetMapping("/tasklist")
     public String getAllTasks(Model model) {
+        logger.info("Task list page open for user: " + authHelper.getUserDetails().getUsername() + ".");
+
         //Getting a list of all tasks from db
         List<Task> taskList = taskService.getAllTasks();
 

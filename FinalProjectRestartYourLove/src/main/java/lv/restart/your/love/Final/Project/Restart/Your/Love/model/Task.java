@@ -26,6 +26,7 @@ public class Task {
     @Transient
     private boolean isCompleted;
 
+
     //constructors
     public Task() {
     }

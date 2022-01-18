@@ -1,13 +1,2 @@
-2022-01-14 15:39:53,478 ERROR lv.restart.your.love.Final.Project.Restart.Your.Love.controller.SignUpController [http-nio-8080-exec-2] Username - Liza - already exists.
-2022-01-14 17:26:20,001 ERROR lv.restart.your.love.Final.Project.Restart.Your.Love.controller.LoginController [http-nio-8080-exec-3] Authentication not successful.
-2022-01-14 17:26:22,413 ERROR lv.restart.your.love.Final.Project.Restart.Your.Love.controller.LoginController [http-nio-8080-exec-5] Authentication not successful.
-2022-01-14 17:31:28,726 ERROR lv.restart.your.love.Final.Project.Restart.Your.Love.controller.LoginController [http-nio-8080-exec-6] Authentication not successful.
-2022-01-14 17:31:56,098 ERROR lv.restart.your.love.Final.Project.Restart.Your.Love.controller.LoginController [http-nio-8080-exec-8] Authentication not successful.
-2022-01-14 17:32:31,012 ERROR lv.restart.your.love.Final.Project.Restart.Your.Love.controller.LoginController [http-nio-8080-exec-3] Authentication not successful.
-2022-01-14 17:34:02,978 ERROR lv.restart.your.love.Final.Project.Restart.Your.Love.controller.LoginController [http-nio-8080-exec-9] Authentication not successful.
-2022-01-14 17:36:54,411 ERROR lv.restart.your.love.Final.Project.Restart.Your.Love.controller.LoginController [http-nio-8080-exec-2] Authentication not successful.
-2022-01-14 17:40:36,629 ERROR lv.restart.your.love.Final.Project.Restart.Your.Love.controller.LoginController [http-nio-8080-exec-5] Authentication not successful.
-2022-01-14 17:40:36,765 ERROR lv.restart.your.love.Final.Project.Restart.Your.Love.controller.LoginController [http-nio-8080-exec-7] Authentication not successful.
-2022-01-14 17:40:36,929 ERROR lv.restart.your.love.Final.Project.Restart.Your.Love.controller.LoginController [http-nio-8080-exec-9] Authentication not successful.
-2022-01-14 18:05:42,669 ERROR lv.restart.your.love.Final.Project.Restart.Your.Love.controller.LoginController [http-nio-8080-exec-3] Authentication not successful.
-2022-01-14 18:07:18,185 ERROR lv.restart.your.love.Final.Project.Restart.Your.Love.controller.LoginController [http-nio-8080-exec-3] Authentication not successful.
+2022-01-18 19:57:22,630 ERROR lv.restart.your.love.Final.Project.Restart.Your.Love.controller.SignUpController [http-nio-8080-exec-2] Username - Liza - already exists.
+2022-01-18 19:57:47,340 ERROR lv.restart.your.love.Final.Project.Restart.Your.Love.controller.SignUpController [http-nio-8080-exec-3] Username - Liva - already exists.

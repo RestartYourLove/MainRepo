@@ -34,7 +34,7 @@ public class TaskDoneButtonController {
     @GetMapping(value = {"/done/{id}"})
     public String markDone(@PathVariable(value = "id") long id, Model model) {
 
-        logger.debug("Setting task status as Done...");
+        logger.debug("Setting task status...");
 
         //Get the currently logged in user
         User currentUser = userRepository.findByUsername(authHelper.getName());

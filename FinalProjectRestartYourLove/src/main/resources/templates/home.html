@@ -34,6 +34,13 @@
 					</p>
 					<p> We promise this will be unforgettable adventure for your couple!</p>
 					<p> Good luck and Enjoy this time with your partner!</p>
+
+					<!-- logout message -->
+					<div th:if="${param.logout}">
+						<div class="alert alert-dark">You have been logged out.</div>
+					</div>
+
+					<!-- buttons to login or signup -->
 					<a class="btn btn-dark btn-xl" href="/login">Log In</a> <a class="btn btn-dark btn-xl" href="/signup">Sign Up</a>
 				</div>
 			</div>

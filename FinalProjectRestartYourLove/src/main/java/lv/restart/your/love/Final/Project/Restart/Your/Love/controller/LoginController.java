@@ -18,10 +18,9 @@ public class LoginController {
     @GetMapping("/login")
     public String login(Model model) {
 
-        logger.debug("User login into profile...");
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        logger.debug("Directed to login page...");
         if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
-            logger.error("Authentication cannot be empty ");
             return "login";
         }
         logger.info("User - " + authentication.getName() + " - logged in.");

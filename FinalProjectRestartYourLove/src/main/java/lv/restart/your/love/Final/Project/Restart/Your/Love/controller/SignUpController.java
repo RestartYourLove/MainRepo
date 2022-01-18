@@ -29,6 +29,7 @@ public class SignUpController {
     @Autowired
     private UserService userService;
 
+
     //method that returns an empty user object used while registering
     @ModelAttribute("user")
     public UserSignUpDto userSignUpDto() {
