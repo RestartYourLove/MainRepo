@@ -4,10 +4,11 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.HashSet;
+import java.util.*;
 
-
+/**
+ * User Class to define user object and to create a constraint with DB table "user".
+ */
 @Entity
 @Table(name = "user", uniqueConstraints = @UniqueConstraint(columnNames = "username"))
 public class User implements UserDetails {
@@ -18,29 +19,25 @@ public class User implements UserDetails {
     private String username;
     private String password;
 
-
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    //creating third connected table
-    @JoinTable(
-            name = "users_progress",
-            joinColumns = @JoinColumn(
-                    name = "user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(
-                    name = "finished_task_id", referencedColumnName = "id"))
-
-    private Collection<Task> finishedTasks;
-
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<TaskStatus> taskStatus = new ArrayList<>();
+    //this list includes the tasks and their statuses. Your task and status fields are included in private List<TaskStatus> taskStatus.
 
     //Constructors
     public User() {
     }
 
-    public User(String username, String password, Collection<Task> finishedTasks) {
+    public User(String username, String password) {
         this.username = username;
         this.password = password;
-        this.finishedTasks = finishedTasks;
     }
 
+    public User(Long id, String username, String password, List<TaskStatus> taskStatus) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.taskStatus = taskStatus;
+    }
 
     //Getters and setters
     public Long getId() {
@@ -67,21 +64,21 @@ public class User implements UserDetails {
         this.password = password;
     }
 
-    public Collection<Task> getFinishedTasks() {
-        return finishedTasks;
+    public List<TaskStatus> getTaskStatus() {
+        return taskStatus;
     }
 
-    public void setFinishedTasks(Collection<Task> finishedTasks) {
-        this.finishedTasks = finishedTasks;
+    public void setTaskStatus(List<TaskStatus> taskStatus) {
+        this.taskStatus = taskStatus;
     }
-
 
     //Custom method
-    //adding finished tasks to a user in db
+
+    //adding tasks to a user in db
     //try to test it
-    public Collection<Task> addFinishedTask(Task task) {
-        finishedTasks.add(task);
-        return finishedTasks;
+    public List<TaskStatus> addTaskStatus(TaskStatus taskStatus) {
+        this.taskStatus.add(taskStatus);
+        return this.taskStatus;
     }
 
 
@@ -111,4 +108,17 @@ public class User implements UserDetails {
         return new HashSet<GrantedAuthority>();
     }
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(id, user.id) && Objects.equals(username, user.username) && Objects.equals(password, user.password) && Objects.equals(taskStatus, user.taskStatus);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, username, password, taskStatus);
+    }
 }
