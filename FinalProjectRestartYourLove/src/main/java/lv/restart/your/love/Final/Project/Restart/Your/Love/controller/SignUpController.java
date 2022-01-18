@@ -18,6 +18,10 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+/**
+ * Spring MVC Controller - SignUpController.java class.
+ * This controller is used to redirect user to the signup.html page.
+ */
 @Controller
 @RequestMapping("/signup")
 public class SignUpController {

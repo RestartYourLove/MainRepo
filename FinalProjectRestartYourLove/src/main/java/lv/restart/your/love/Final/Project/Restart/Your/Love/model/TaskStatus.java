@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- *  TaskStatus Class to define TaskStatus object and to create a constraint with DB table "task_status".
+ *  TaskStatus Class is used to define TaskStatus object and to create a constraint with DB table "task_status".
  */
 @Entity
 @Table(name = "task_status")

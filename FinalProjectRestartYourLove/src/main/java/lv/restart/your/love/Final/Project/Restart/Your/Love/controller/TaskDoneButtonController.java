@@ -19,6 +19,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * TaskDoneButtonController.java class is used to change tasks status (done or notdone) by users ID.
+ */
 @Controller
 public class TaskDoneButtonController {
 

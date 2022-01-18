@@ -5,7 +5,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 
-//This enables use of all the CRUD actions with database, etc
+/**
+ * UserRepository.java class is created by extending the JpaRepository interface.
+ * JpaRepository interface is a Spring Data interface and provides all the CRUD operations automatically.
+ */
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
     User findByUsername(String username);

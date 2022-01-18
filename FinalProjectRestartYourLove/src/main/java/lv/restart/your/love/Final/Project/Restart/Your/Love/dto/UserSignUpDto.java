@@ -3,6 +3,9 @@ package lv.restart.your.love.Final.Project.Restart.Your.Love.dto;
 import com.sun.istack.NotNull;
 import lv.restart.your.love.Final.Project.Restart.Your.Love.validation.PasswordMatches;
 
+/**
+ * UserSignUpDto class. Data Transfer Object is needed to send all of the registration data to backend code part.
+ */
 @PasswordMatches
 public class UserSignUpDto {
 
