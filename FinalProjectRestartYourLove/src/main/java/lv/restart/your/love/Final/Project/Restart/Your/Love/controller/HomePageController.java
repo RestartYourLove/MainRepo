@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+/**
+ * HomePageController class is used to redirect user to the home.html page.
+ */
 @Controller
 public class HomePageController {
 

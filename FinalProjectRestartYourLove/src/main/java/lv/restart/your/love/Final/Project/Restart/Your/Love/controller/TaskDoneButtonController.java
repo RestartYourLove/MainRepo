@@ -15,6 +15,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+/**
+ * TaskDoneButtonController.java class is used to change tasks status (done or notdone) by users ID.
+ */
 @Controller
 public class TaskDoneButtonController {
 
@@ -49,7 +52,9 @@ public class TaskDoneButtonController {
         //set task as a model attribute to pre-populate the form
         model.addAttribute("myTask", myTask);
 
+
         logger.info("User " + currentUser.getUsername() + " set task '" + ts1.getTask().getTitle() + "' as Done.");
+
         return "redirect:/taskdetails/{id}";
     }
 
@@ -73,7 +78,9 @@ public class TaskDoneButtonController {
         //set task as a model attribute to pre-populate the form
         model.addAttribute("myTask", myTask);
 
+
         logger.info("User "+ currentUser.getUsername() + " set task '" + ts1.getTask().getTitle() + "' as Not Done.");
+
         return "redirect:/taskdetails/{id}";
     }
 }

@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * TaskListController.java class used to redirect user to tasklist.page to see al the available tasks.
+ */
 @Controller
 public class TaskListController {
     Logger logger = LoggerFactory.getLogger(TaskListController.class);
@@ -28,7 +31,6 @@ public class TaskListController {
     @Autowired
     private AuthHelper authHelper;
 
-    // Get all tasks
     @GetMapping("/tasklist")
     public String getAllTasks(Model model) {
         logger.info("Task list page open for user: " + authHelper.getUserDetails().getUsername() + ".");
@@ -55,8 +57,6 @@ public class TaskListController {
         //set taskList as a model named "taskTitle" attribute use in html
         model.addAttribute("taskTitle", taskList);
         return "tasklist";
-
     }
-
 
 }

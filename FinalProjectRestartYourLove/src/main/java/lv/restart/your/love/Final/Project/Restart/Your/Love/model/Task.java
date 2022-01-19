@@ -2,8 +2,13 @@ package lv.restart.your.love.Final.Project.Restart.Your.Love.model;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+
+/**
+ * Task Class to define task object and to create a constraint with DB table "task".
+ */
 
 @Entity
 @Table(name = "task")

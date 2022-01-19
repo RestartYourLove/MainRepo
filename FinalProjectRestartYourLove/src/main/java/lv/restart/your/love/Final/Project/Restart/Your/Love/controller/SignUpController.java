@@ -20,6 +20,10 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+/**
+ * Spring MVC Controller - SignUpController.java class.
+ * This controller is used to redirect user to the signup.html page.
+ */
 @Controller
 @RequestMapping("/signup")
 public class SignUpController {
@@ -28,7 +32,6 @@ public class SignUpController {
 
     @Autowired
     private UserService userService;
-
 
     //method that returns an empty user object used while registering
     @ModelAttribute("user")
@@ -43,11 +46,12 @@ public class SignUpController {
         return "signup";
     }
 
-
     @PostMapping
     public ModelAndView registerUserAccount(@ModelAttribute("user") @Valid UserSignUpDto signUpDto, HttpServletRequest request, ModelAndView mav,
                                             Errors errors){
+
         logger.debug("Registering User account.");
+
         try {
             User registered = userService.registerNewUserAccount(signUpDto);
             logger.info("User registered with username: " + signUpDto.getUsername());
@@ -57,10 +61,7 @@ public class SignUpController {
             mav.setViewName("errorSignup");
             return mav;
         }
-
-
         return new ModelAndView("successSignup", "user", signUpDto);
-
     }
 
 }

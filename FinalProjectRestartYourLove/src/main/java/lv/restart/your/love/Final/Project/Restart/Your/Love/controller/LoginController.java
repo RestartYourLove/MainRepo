@@ -9,6 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+/**
+ * LoginController class is used to redirect user to the login.html page if the user is already registered in the DB.
+ */
 @Controller
 public class LoginController {
 
