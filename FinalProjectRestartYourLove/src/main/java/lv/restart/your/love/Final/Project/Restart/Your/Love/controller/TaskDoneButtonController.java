@@ -19,6 +19,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * TaskDoneButtonController.java class is used to change tasks status (done or notdone) by users ID.
+ */
 @Controller
 public class TaskDoneButtonController {
 
@@ -49,7 +52,6 @@ public class TaskDoneButtonController {
         //set task as a model attribute to pre-populate the form
         model.addAttribute("myTask", myTask);
 
-
         return "redirect:/taskdetails/{id}";
     }
 
@@ -70,7 +72,6 @@ public class TaskDoneButtonController {
 
         //set task as a model attribute to pre-populate the form
         model.addAttribute("myTask", myTask);
-
 
         return "redirect:/taskdetails/{id}";
     }

@@ -9,6 +9,5 @@ public interface UserService extends UserDetailsService {
     //method that saves the registered user to database through the dto class
     User save(UserSignUpDto signUpDto);
 
-
     User registerNewUserAccount(UserSignUpDto signUpDto) throws UserAlreadyExistException;
 }
