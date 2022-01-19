@@ -79,12 +79,6 @@ class UserServiceImplTest {
         userRepository.save(newUser);
         assertNotNull(newUser.getUsername());
         assertEquals("userTest", newUser.getUsername());
-
-
-
     }
 
-    @Test
-    void registerNewUserAccountUserAlreadyExistExceptionTest() {
-    }
 }
