@@ -27,6 +27,9 @@ class UserServiceImplTest {
     @Mock
     private UserRepository userRepository;
 
+    private BCryptPasswordEncoder passwordEncoder;
+
+
     @BeforeEach
     void setUp() {
         MockitoAnnotations.initMocks(this);
@@ -67,26 +70,16 @@ class UserServiceImplTest {
         assertEquals("userTest", user.getUsername());
     }
 
-
-//NOT FINISHED
     @Test
     void registerNewUserAccountTest() {
         UserSignUpDto signUpDto = new UserSignUpDto();
         signUpDto.setUsername("userTest");
         signUpDto.setPassword("qwerty");
-        User notSavedUser = new User(signUpDto.getUsername(), signUpDto.getPassword());
+        User newUser = new User(signUpDto.getUsername(), signUpDto.getPassword());
+        userRepository.save(newUser);
+        assertNotNull(newUser.getUsername());
+        assertEquals("userTest", newUser.getUsername());
 
-
-        UserSignUpDto signUpDto2 = new UserSignUpDto();
-        signUpDto2.setUsername("userTest2");
-        signUpDto2.setPassword("qwerty2");
-        User savedUser2 = new User(signUpDto2.getUsername(), signUpDto2.getPassword());
-        userRepository.save(savedUser2);
-
-        when(userRepository.findByUsername(savedUser2.getUsername()).equals(notSavedUser.getUsername())).thenReturn(null);
-//        userRepository.save(notSavedUser);
-
-//        assertNotNull(userdetails);
 
 
     }
