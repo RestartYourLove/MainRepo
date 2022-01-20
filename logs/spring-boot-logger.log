@@ -13,3 +13,14 @@
 2022-01-18 19:58:49,853 INFO lv.restart.your.love.Final.Project.Restart.Your.Love.controller.TaskListController [http-nio-8080-exec-1] Task list page open for user: Anna.
 2022-01-18 19:59:06,604 DEBUG lv.restart.your.love.Final.Project.Restart.Your.Love.controller.TaskDoneButtonController [http-nio-8080-exec-3] Setting task status...
 2022-01-18 19:59:07,814 INFO lv.restart.your.love.Final.Project.Restart.Your.Love.controller.TaskDoneButtonController [http-nio-8080-exec-3] User Anna set task 'Discover new flavors' as Done.
+2022-01-20 18:25:09,888 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting Application using Java 11.0.11 on LizaDELL with PID 2920 (C:\Users\siman\IdeaProjects\MainRepo\FinalProjectRestartYourLove\target\classes started by siman in C:\Users\siman\IdeaProjects\MainRepo)
+2022-01-20 18:25:09,893 DEBUG org.springframework.boot.StartupInfoLogger [restartedMain] Running with Spring Boot v2.6.1, Spring v5.3.13
+2022-01-20 18:25:09,894 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2022-01-20 18:25:27,691 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started Application in 19.956 seconds (JVM running for 22.333)
+2022-01-20 18:25:52,471 DEBUG lv.restart.your.love.Final.Project.Restart.Your.Love.controller.LoginController [http-nio-8080-exec-7] Directed to login page...
+2022-01-20 18:26:01,798 INFO lv.restart.your.love.Final.Project.Restart.Your.Love.controller.TaskListController [http-nio-8080-exec-4] Task list page open for user: Liza.
+2022-01-20 18:26:45,763 INFO lv.restart.your.love.Final.Project.Restart.Your.Love.controller.TaskListController [http-nio-8080-exec-7] Task list page open for user: Liza.
+2022-01-20 18:26:58,058 INFO lv.restart.your.love.Final.Project.Restart.Your.Love.controller.TaskListController [http-nio-8080-exec-9] Task list page open for user: Liza.
+2022-01-20 18:27:09,233 DEBUG lv.restart.your.love.Final.Project.Restart.Your.Love.controller.LoginController [http-nio-8080-exec-4] Directed to login page...
+2022-01-20 18:27:27,774 DEBUG lv.restart.your.love.Final.Project.Restart.Your.Love.controller.SignUpController [http-nio-8080-exec-4] Registering User account.
+2022-01-20 18:27:27,853 ERROR lv.restart.your.love.Final.Project.Restart.Your.Love.controller.SignUpController [http-nio-8080-exec-4] Username - Liza - already exists.
