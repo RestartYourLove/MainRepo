@@ -24,3 +24,8 @@ h1{
     font-weight: 600;
     border-color: #145637;
 }
+.alert-danger{
+    border: solid 2px #ff000078;
+    background-color: #e289893b;
+    font-style:italic;
+}

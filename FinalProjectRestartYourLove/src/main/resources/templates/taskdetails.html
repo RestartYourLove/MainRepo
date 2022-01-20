@@ -3,50 +3,71 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>Task Details</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"/>
+
+    <link rel="stylesheet" th:href="@{/css/taskdetailsStyle.css}" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet"/>
 
 </head>
-<body>
+<body id="bootstrap-overrides">
 
 <!-- navigation bar (header) bootstrap v5.1 -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">RESTART YOUR LOVE!</a>
+        <a class="navbar-brand" href="#">
+            <img id="logo2" th:src="@{/img/logo2.png}" onclick="location.href='/'" alt="Restart your love">
+        </a>
         <span class="navbar-text">
             Welcome, <span sec:authentication="principal.username"> User</span>!
-            <button type="button" class="btn btn-success btn-sm" sec:authorize="isAuthenticated()"> <a style="text-decoration:none; color: white" th:href="@{/logout}">Log out</a></button>
+            <button type="button" class="btn btn-success btn-md" sec:authorize="isAuthenticated()"> <a
+                    style="text-decoration:none; color: white" th:href="@{/logout}">Log out</a></button>
         </span>
     </div>
 </nav>
 
 
-<section class="bg-white pt-5 pb-5 shadow-sm">
-<div class="container">
-    <h1>TASK DETAILS PAGE</h1>
+<div class="bg-white pt-4 pb-5 shadow-sm">
+    <div class="container">
+        <h3>Description of the task</h3>
+        <p class="pb-2">Day <span th:text="${myTask.getId()}"></span> - <q id="movie"><span
+                th:text="${myTask.getTitle()}"></span></q>
+        </p>
 
-    <h5>DESCRIPTION OF TASK (DAY# <span th:text = "${myTask.getId()}"></span>, TITLED "<span th:text = "${myTask.getTitle()}"></span>") : </h5>
+        <div class="task-container row ">
+            <!-- Task image from url thats saved in the database -->
+            <img class="col-7" th:src="@{${myTask.getImageLink()}}" alt="Task Image"/>
+            <br>
 
-    <!-- Task image from url thats saved in the database -->
-    <img th:src="@{${myTask.getImageLink()}}" alt="Task Image" />
+            <!-- Task description-->
+            <div class="col-5 lh-lg" th:text="${myTask.getDescription()}"></div>
+        </div>
+        <br>
 
-    <!-- Task description-->
-    <div th:text = "${myTask.getDescription()}"></div>
+        <!-- Shows weather this task is marked as DONE or NOT DONE for this user and displays a String "Done" or "Not done"-->
+        <p><strong>Task status: </strong><span th:text="${myTask.printStatus()}"></span></p>
 
-    <!-- Shows weather this task is marked as DONE or NOT DONE for this user and displays a String "Done" or "Not done"-->
-    <p>Task status: <span th:text = "${myTask.printStatus()}"></span></p>
-
-    <!-- switch case to display either one or the other button according to task status -->
-    <span th:switch="${myTask.isCompleted()}">
-    <a th:case="false" class="btn btn-success btn-xl" href="#" th:href="@{/done/{id}(id=${myTask.getId()})}" >Mark task Done</a>
-    <a th:case="true" class="btn btn-danger btn-xl" href="#" th:href="@{/notdone/{id}(id=${myTask.getId()})}" >Unmark done</a> <a class="btn btn-light btn-xl" href="/tasklist">Back to the list</a>
+        <!-- switch case to display either one or the other button according to task status -->
+        <span th:switch="${myTask.isCompleted()}">
+    <a th:case="false" class="btn btn-success btn-lg" href="#" th:href="@{/done/{id}(id=${myTask.getId()})}">Mark task Done</a>
+    <a th:case="true" class="btn btn-danger btn-lg" href="#" th:href="@{/notdone/{id}(id=${myTask.getId()})}">Unmark done</a>
+            <a class="btn btn-light btn-lg" href="/tasklist">Back to the list</a>
     </span>
 
+        <br>
+        <div class="col-12 border-top">
+            <footer class="row pt-4">
+                <p class="course col-4">She Goes Tech II Bootcamp</p>
+                <br>
+                <p class="team col-4 text-end"><i>RestartYourLove</i> project team</p>
+            </footer>
+        </div>
+    </div>
 </div>
-</section>
 
 </body>
 </html>

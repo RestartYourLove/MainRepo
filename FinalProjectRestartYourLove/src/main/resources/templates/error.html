@@ -11,16 +11,17 @@
 		  integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"/>
 
 	<link rel="stylesheet" th:href="@{/css/errorStyle.css}" type="text/css"/>
-	<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"/>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet"/>
 
 </head>
 <body id="bootstrap-overrides">
 
 <section class="error-page section">
 	<div class="container-fluid">
-		<div class="row">
+		<div class="row mt-5">
 			<div class="col-lg-6 offset-lg-3 col-12">
 				<div class="text-center">
+					<img id="logo1" th:src="@{/img/logo1.png}" onclick="location.href='/'" style="cursor: pointer;" class="img-fluid" alt="Restart your love logo">
 					<h1><span>Oops.. Sorry, something went wrong!</span></h1>
 					<br>
 					<p>Make sure you are logged in or go back to the homepage and try again.</p>
