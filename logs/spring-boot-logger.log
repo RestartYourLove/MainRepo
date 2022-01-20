@@ -1,0 +1,15 @@
+2022-01-18 19:56:40,031 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting Application using Java 11.0.11 on DESKTOP-KQ4S1ME with PID 9668 (F:\SGT_2\MainRepo\FinalProjectRestartYourLove\target\classes started by Admin in F:\SGT_2\MainRepo)
+2022-01-18 19:56:40,038 DEBUG org.springframework.boot.StartupInfoLogger [restartedMain] Running with Spring Boot v2.6.1, Spring v5.3.13
+2022-01-18 19:56:40,039 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2022-01-18 19:56:50,622 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started Application in 11.901 seconds (JVM running for 13.418)
+2022-01-18 19:57:22,170 DEBUG lv.restart.your.love.Final.Project.Restart.Your.Love.controller.SignUpController [http-nio-8080-exec-2] Registering User account.
+2022-01-18 19:57:22,630 ERROR lv.restart.your.love.Final.Project.Restart.Your.Love.controller.SignUpController [http-nio-8080-exec-2] Username - Liza - already exists.
+2022-01-18 19:57:47,261 DEBUG lv.restart.your.love.Final.Project.Restart.Your.Love.controller.SignUpController [http-nio-8080-exec-3] Registering User account.
+2022-01-18 19:57:47,340 ERROR lv.restart.your.love.Final.Project.Restart.Your.Love.controller.SignUpController [http-nio-8080-exec-3] Username - Liva - already exists.
+2022-01-18 19:58:10,624 DEBUG lv.restart.your.love.Final.Project.Restart.Your.Love.controller.SignUpController [http-nio-8080-exec-5] Registering User account.
+2022-01-18 19:58:11,109 INFO lv.restart.your.love.Final.Project.Restart.Your.Love.controller.SignUpController [http-nio-8080-exec-5] User registered with username: Anna
+2022-01-18 19:58:26,499 DEBUG lv.restart.your.love.Final.Project.Restart.Your.Love.controller.LoginController [http-nio-8080-exec-7] Directed to login page...
+2022-01-18 19:58:33,910 DEBUG lv.restart.your.love.Final.Project.Restart.Your.Love.controller.LoginController [http-nio-8080-exec-9] Directed to login page...
+2022-01-18 19:58:49,853 INFO lv.restart.your.love.Final.Project.Restart.Your.Love.controller.TaskListController [http-nio-8080-exec-1] Task list page open for user: Anna.
+2022-01-18 19:59:06,604 DEBUG lv.restart.your.love.Final.Project.Restart.Your.Love.controller.TaskDoneButtonController [http-nio-8080-exec-3] Setting task status...
+2022-01-18 19:59:07,814 INFO lv.restart.your.love.Final.Project.Restart.Your.Love.controller.TaskDoneButtonController [http-nio-8080-exec-3] User Anna set task 'Discover new flavors' as Done.

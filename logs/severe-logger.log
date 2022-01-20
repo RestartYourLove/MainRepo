@@ -1,0 +1,2 @@
+2022-01-18 19:57:22,630 ERROR lv.restart.your.love.Final.Project.Restart.Your.Love.controller.SignUpController [http-nio-8080-exec-2] Username - Liza - already exists.
+2022-01-18 19:57:47,340 ERROR lv.restart.your.love.Final.Project.Restart.Your.Love.controller.SignUpController [http-nio-8080-exec-3] Username - Liva - already exists.

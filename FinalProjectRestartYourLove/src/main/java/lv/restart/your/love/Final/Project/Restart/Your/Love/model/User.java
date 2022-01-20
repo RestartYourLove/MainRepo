@@ -73,7 +73,6 @@ public class User implements UserDetails {
     }
 
     //Custom method
-
     //adding tasks to a user in db
     //try to test it
     public List<TaskStatus> addTaskStatus(TaskStatus taskStatus) {

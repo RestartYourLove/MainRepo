@@ -8,6 +8,10 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * TaskRepository.java class is created by extending the JpaRepository interface.
+ * JpaRepository interface is a Spring Data interface and provides all the CRUD operations automatically.
+ */
 @Repository
 public interface TaskRepository extends JpaRepository<Task, Long> {
 

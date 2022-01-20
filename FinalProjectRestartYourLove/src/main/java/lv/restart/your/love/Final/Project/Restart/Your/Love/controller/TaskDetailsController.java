@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 import java.util.Optional;
 
-
+/**
+ *  TaskDetailsController class is used to redirect user to the taskdetails.html page taking into account users ID.
+ */
 @Controller
 public class TaskDetailsController {
 
@@ -56,6 +58,5 @@ public class TaskDetailsController {
 
         return "taskdetails";
     }
-
 
 }

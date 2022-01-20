@@ -4,6 +4,9 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
+/**
+ *  TaskStatus Class is used to define TaskStatus object and to create a constraint with DB table "task_status".
+ */
 @Entity
 @Table(name = "task_status")
 public class TaskStatus implements Serializable {
@@ -77,6 +80,7 @@ public class TaskStatus implements Serializable {
     }
 
 
+    // hashcode and equals implementation
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

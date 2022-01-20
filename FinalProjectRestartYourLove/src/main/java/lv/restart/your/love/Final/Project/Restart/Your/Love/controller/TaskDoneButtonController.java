@@ -7,20 +7,21 @@ import lv.restart.your.love.Final.Project.Restart.Your.Love.model.User;
 import lv.restart.your.love.Final.Project.Restart.Your.Love.repository.TaskStatusRepository;
 import lv.restart.your.love.Final.Project.Restart.Your.Love.repository.UserRepository;
 import lv.restart.your.love.Final.Project.Restart.Your.Love.service.TaskService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
-
+/**
+ * TaskDoneButtonController.java class is used to change tasks status (done or notdone) by users ID.
+ */
 @Controller
 public class TaskDoneButtonController {
+
+    Logger logger = LoggerFactory.getLogger(TaskDoneButtonController.class);
 
     @Autowired
     private TaskService taskService;
@@ -36,6 +37,8 @@ public class TaskDoneButtonController {
     @GetMapping(value = {"/done/{id}"})
     public String markDone(@PathVariable(value = "id") long id, Model model) {
 
+        logger.debug("Setting task status...");
+
         //Get the currently logged in user
         User currentUser = userRepository.findByUsername(authHelper.getName());
 
@@ -50,6 +53,8 @@ public class TaskDoneButtonController {
         model.addAttribute("myTask", myTask);
 
 
+        logger.info("User " + currentUser.getUsername() + " set task '" + ts1.getTask().getTitle() + "' as Done.");
+
         return "redirect:/taskdetails/{id}";
     }
 
@@ -57,6 +62,8 @@ public class TaskDoneButtonController {
     //Undo mark task status done and remove it from db join table
     @GetMapping(value = {"/notdone/{id}"})
     public String markNotDone(@PathVariable(value = "id") long id, Model model) {
+
+        logger.debug("Setting task status as Not Done...");
 
         //Get the currently logged in user
         User currentUser = userRepository.findByUsername(authHelper.getName());
@@ -71,6 +78,8 @@ public class TaskDoneButtonController {
         //set task as a model attribute to pre-populate the form
         model.addAttribute("myTask", myTask);
 
+
+        logger.info("User "+ currentUser.getUsername() + " set task '" + ts1.getTask().getTitle() + "' as Not Done.");
 
         return "redirect:/taskdetails/{id}";
     }

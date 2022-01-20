@@ -10,6 +10,10 @@ import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
 import static java.lang.annotation.ElementType.TYPE;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
+/**
+ * PasswordMatches interface.
+ * A custom annotation to make sure that the password and matchingPassword fields match up.
+ */
 @Target({ TYPE, ANNOTATION_TYPE })
 @Retention(RUNTIME)
 @Constraint(validatedBy = PasswordMatchesValidator.class)
